@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp18dx1kt1ic8"]
+
+[ext_resource type="PackedScene" uid="uid://bsmff17kvyip" path="res://Scenes/Props/lamp_segment.tscn" id="1_bekw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjuyy"]
+size = Vector2(4, 4)
+
+[sub_resource type="Gradient" id="Gradient_bekw5"]
+offsets = PackedFloat32Array(0, 0.467532)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uno5e"]
+gradient = SubResource("Gradient_bekw5")
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[node name="Lamp" type="Node2D"]
+
+[node name="LampAnchor" type="StaticBody2D" parent="."]
+
+[node name="LampAnchorShape" type="CollisionShape2D" parent="LampAnchor"]
+shape = SubResource("RectangleShape2D_hjuyy")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+visible = false
+node_a = NodePath("../LampAnchor")
+node_b = NodePath("../RopeSegment")
+
+[node name="RopeSegment" parent="." instance=ExtResource("1_bekw5")]
+position = Vector2(0, 3)
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(0, 6)
+node_a = NodePath("../RopeSegment")
+node_b = NodePath("../RopeSegment2")
+
+[node name="RopeSegment2" parent="." instance=ExtResource("1_bekw5")]
+position = Vector2(0, 9)
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+visible = false
+position = Vector2(0, 12)
+node_a = NodePath("../RopeSegment2")
+node_b = NodePath("../RopeSegment3")
+
+[node name="RopeSegment3" parent="." instance=ExtResource("1_bekw5")]
+position = Vector2(0, 15)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 50)
+blend_mode = 2
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_uno5e")

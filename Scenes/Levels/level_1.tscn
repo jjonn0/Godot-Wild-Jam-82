@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=4 uid="uid://ccfq5cdpy6xq4"]
+
+[ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="1_iixi8"]
+[ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/level.gd" id="1_jv26f"]
+[ext_resource type="Texture2D" uid="uid://5f6511mresss" path="res://Dungeon_Tiles.png" id="1_tlcug"]
+[ext_resource type="PackedScene" uid="uid://b1cxuuohh707b" path="res://Scenes/player_spawn.tscn" id="4_cyadu"]
+[ext_resource type="PackedScene" uid="uid://cp18dx1kt1ic8" path="res://Scenes/Props/lamp.tscn" id="4_iixi8"]
+[ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="4_xgxfi"]
+[ext_resource type="Texture2D" uid="uid://ddyu4628tmds1" path="res://icon.svg" id="5_5f3p6"]
+[ext_resource type="PackedScene" uid="uid://c32r22ucltpfa" path="res://Scenes/player_exit.tscn" id="5_cyadu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iixi8"]
+shader = ExtResource("1_iixi8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyadu"]
+shader = ExtResource("1_iixi8")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4dpyx"]
+texture = ExtResource("1_tlcug")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_3mqfk"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4dpyx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rb0md"]
+shader = ExtResource("4_xgxfi")
+
+[node name="Level1" type="Node"]
+script = ExtResource("1_jv26f")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.329158, 0.329158, 0.329158, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_iixi8")
+offset_left = 11.0
+offset_top = -245.0
+offset_right = 521.0
+offset_bottom = 51.0
+color = Color(0.455739, 0.0393125, 0.150993, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_cyadu")
+tile_map_data = PackedByteArray("AAADAP7/AAABAAAAAAADAP3/AAACAAEAAAADAPz/AAACAAEAAAADAPv/AAACAAEAAAADAPr/AAACAAEAAAADAPn/AAACAAEAAAADAPj/AAACAAEAAAADAPf/AAACAAEAAAADAPb/AAACAAEAAAADAPX/AAACAAEAAAADAPT/AAACAAEAAAADAPP/AAACAAEAAAADAPL/AAACAAEAAAADAPH/AAACAAEAAAADAPD/AAACAAEAAAADAO//AAACAAEAAAADAO7/AAACAAEAAAADAO3/AAACAAEAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAACAP7/AAABAAAAAAAEAP7/AAABAAAAAAAFAP7/AAABAAAAAAAGAP7/AAABAAAAAAAHAP7/AAABAAAAAAAIAP7/AAABAAAAAAAJAP7/AAABAAAAAAAKAP7/AAABAAAAAAALAP7/AAABAAAAAAAMAP7/AAABAAAAAAANAP7/AAABAAAAAAAOAP7/AAABAAAAAAAPAP7/AAABAAAAAAAQAP7/AAABAAAAAAARAP7/AAABAAAAAAASAP7/AAABAAAAAAATAP7/AAABAAAAAAAUAP7/AAABAAAAAAAVAP7/AAABAAAAAAAWAP7/AAABAAAAAAAXAP7/AAABAAAAAAAYAP7/AAABAAAAAAAZAP7/AAABAAAAAAAaAP7/AAABAAAAAAAbAP7/AAABAAAAAAAcAP7/AAABAAAAAAAdAP7/AAABAAAAAAAeAP7/AAABAAAAAAAfAP7/AAABAAAAAAAgAP7/AAABAAAAAAAhAP7/AAABAAAAAAAiAP7/AAABAAAAAAAjAP7/AAABAAAAAAAkAP7/AAABAAAAAAAlAP7/AAABAAAAAAAmAP7/AAABAAAAAAAnAP7/AAABAAAAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAACAP//AAABAAEAAAADAP//AAABAAEAAAAEAP//AAABAAEAAAAFAP//AAABAAEAAAAGAP//AAABAAEAAAAHAP//AAABAAEAAAAIAP//AAABAAEAAAAJAP//AAABAAEAAAAKAP//AAABAAEAAAALAP//AAABAAEAAAAMAP//AAABAAEAAAANAP//AAABAAEAAAAOAP//AAABAAEAAAAPAP//AAABAAEAAAAQAP//AAABAAEAAAARAP//AAABAAEAAAASAP//AAABAAEAAAATAP//AAABAAEAAAAUAP//AAABAAEAAAAVAP//AAABAAEAAAAWAP//AAABAAEAAAAXAP//AAABAAEAAAAYAP//AAABAAEAAAAZAP//AAABAAEAAAAaAP//AAABAAEAAAAbAP//AAABAAEAAAAcAP//AAABAAEAAAAdAP//AAABAAEAAAAeAP//AAABAAEAAAAfAP//AAABAAEAAAAgAP//AAABAAEAAAAhAP//AAABAAEAAAAiAP//AAABAAEAAAAjAP//AAABAAEAAAAkAP//AAABAAEAAAAlAP//AAABAAEAAAAmAP//AAABAAEAAAAnAP//AAABAAEAAAACAP3/AAABAAEAAAACAPz/AAABAAEAAAACAPv/AAABAAEAAAACAPr/AAABAAEAAAACAPn/AAABAAEAAAACAPj/AAABAAEAAAACAPf/AAABAAEAAAACAPb/AAABAAEAAAACAPX/AAABAAEAAAACAPT/AAABAAEAAAABAPT/AAABAAEAAAABAPP/AAABAAEAAAABAPL/AAABAAEAAAACAPH/AAABAAEAAAACAPD/AAABAAEAAAACAO//AAABAAEAAAACAO7/AAABAAEAAAACAO3/AAABAAEAAAABAO3/AAABAAEAAAABAO7/AAABAAEAAAAAAO7/AAABAAEAAAAAAO//AAABAAEAAAAAAO3/AAABAAEAAAAAAPD/AAABAAEAAAAAAPH/AAABAAEAAAAAAPL/AAABAAEAAAAAAPP/AAABAAEAAAAAAPT/AAABAAEAAAAAAPX/AAABAAEAAAAAAPb/AAABAAEAAAAAAPf/AAABAAEAAAAAAPj/AAABAAEAAAAAAPn/AAABAAEAAAAAAPr/AAABAAEAAAAAAPv/AAABAAEAAAAAAPz/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAABAPz/AAABAAEAAAABAPv/AAABAAEAAAABAPr/AAABAAEAAAABAPn/AAABAAEAAAABAPX/AAABAAEAAAABAPH/AAABAAEAAAABAPD/AAABAAEAAAABAO//AAABAAEAAAACAPL/AAABAAEAAAACAPP/AAABAAEAAAABAPb/AAABAAEAAAABAPf/AAABAAEAAAABAPj/AAABAAEAAAA=")
+tile_set = SubResource("TileSet_3mqfk")
+
+[node name="Lamp" parent="." instance=ExtResource("4_iixi8")]
+position = Vector2(195, -120)
+
+[node name="PlayerSpawn" parent="." instance=ExtResource("4_cyadu")]
+position = Vector2(315, -47)
+
+[node name="PlayerExit" parent="." instance=ExtResource("5_cyadu")]
+position = Vector2(88, -48)
+next_level = "res://Scenes/Levels/level_2.tscn"
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_rb0md")
+position = Vector2(393, -64)
+texture = ExtResource("5_5f3p6")

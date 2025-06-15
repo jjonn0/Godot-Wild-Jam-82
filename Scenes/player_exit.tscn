@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c32r22ucltpfa"]
+
+[ext_resource type="Script" uid="uid://dlombboym6j36" path="res://Code/Scripts/player_exit.gd" id="1_gmpya"]
+
+[sub_resource type="Gradient" id="Gradient_82pcb"]
+offsets = PackedFloat32Array(0, 0.649351)
+colors = PackedColorArray(1, 1, 1, 1, 0.0509804, 0.0509804, 0.0509804, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ep3pb"]
+gradient = SubResource("Gradient_82pcb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep3pb"]
+size = Vector2(25, 25)
+
+[node name="PlayerExit" type="Area2D" groups=["player_exit"]]
+script = ExtResource("1_gmpya")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+blend_mode = 2
+texture = SubResource("GradientTexture2D_ep3pb")
+
+[node name="ExitShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ep3pb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
