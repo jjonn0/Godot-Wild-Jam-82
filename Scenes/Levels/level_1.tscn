@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://ccfq5cdpy6xq4"]
 
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="1_iixi8"]
-[ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/level.gd" id="1_jv26f"]
+[ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_jv26f"]
 [ext_resource type="Texture2D" uid="uid://5f6511mresss" path="res://Dungeon_Tiles.png" id="1_tlcug"]
 [ext_resource type="PackedScene" uid="uid://b1cxuuohh707b" path="res://Scenes/player_spawn.tscn" id="4_cyadu"]
 [ext_resource type="PackedScene" uid="uid://cp18dx1kt1ic8" path="res://Scenes/Props/lamp.tscn" id="4_iixi8"]

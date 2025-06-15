@@ -5,7 +5,7 @@ var jump_gravity
 
 func state_enter() -> void:
 	
-	animation_player.play("jump")
+	animation_player.play("jumping")
 	
 	player.allow_h_input = self.allow_h_input
 	player.allow_v_input = self.allow_v_input
