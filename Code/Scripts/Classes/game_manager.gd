@@ -3,6 +3,7 @@ class_name GameManager extends Node
 @export var world_2d : Node2D
 @export var gui : Control
 
+@export var starting_gui_element : String
 @export var starting_level : String
 
 var current_2d_scene
@@ -15,7 +16,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	
-	change_2d_scene("res://Scenes/Levels/level_1.tscn")
+	change_gui_scene(starting_gui_element)
 
 func change_gui_scene(new_scene : String, delete : bool = true, keep_running : bool = false) -> void:
 	

@@ -24,12 +24,13 @@ func spawn_player() -> void:
 	
 	if current_spawn == null:
 		print("No spawn point found!")
-		pass
+		return
 	
 	var player : CharacterBody2D = player_scene.instantiate()
 	player.position = current_spawn.position
 	
 	add_child(player)
+	player.respawn.connect(on_player_death)
 
 func prepare_level_unload() -> void:
 	
@@ -42,3 +43,9 @@ func prepare_level_unload() -> void:
 func level_unload(next_level : String) -> void:
 	
 	Global.game_manager.change_2d_scene(next_level)
+
+func on_player_death(player : CharacterBody2D) -> void:
+	
+	if current_spawn != null:
+		player.position = current_spawn.position
+		player.reset()
