@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1g3gjif83trr"
-path="res://.godot/imported/hospital_tiles.png-3a37d6d7c8f62f3a973a50bee848193a.ctex"
+uid="uid://d1mox11sjj6yf"
+path="res://.godot/imported/end_of_the_hall.png-943f11db532bede7668dd31d48d64939.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/hospital_tiles.png"
-dest_files=["res://.godot/imported/hospital_tiles.png-3a37d6d7c8f62f3a973a50bee848193a.ctex"]
+source_file="res://Assets/Hospital/end_of_the_hall.png"
+dest_files=["res://.godot/imported/end_of_the_hall.png-943f11db532bede7668dd31d48d64939.ctex"]
 
 [params]
 

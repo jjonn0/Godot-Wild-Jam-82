@@ -12,7 +12,7 @@ void fragment() {
 	
 	float average_color = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
 	
-	COLOR = vec4(average_color, average_color, average_color, 1.0);
+	COLOR = vec4(average_color, average_color, average_color, COLOR.a);
 	
 }
 

@@ -1,22 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsmff17kvyip"]
+[gd_scene load_steps=3 format=3 uid="uid://bsmff17kvyip"]
 
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="1_m1rvn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u5lgh"]
 shader = ExtResource("1_m1rvn")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjuyy"]
-size = Vector2(2, 6)
-
 [node name="RopeSegment" type="RigidBody2D"]
 
 [node name="RopeColour" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_u5lgh")
-offset_left = -1.0
 offset_top = -3.0
 offset_right = 1.0
 offset_bottom = 3.0
-color = Color(0, 0, 0, 1)
-
-[node name="RopeSegmentShape" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_hjuyy")
+color = Color(0.14902, 0.152941, 0.192157, 1)

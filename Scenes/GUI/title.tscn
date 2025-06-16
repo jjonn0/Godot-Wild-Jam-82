@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://gry7567bti2x"]
+[gd_scene load_steps=8 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dwy3psc1rdomj" path="res://Code/Scripts/start_game_button_script.gd" id="1_cfg0g"]
-[ext_resource type="FontFile" uid="uid://b0lxjcqi7eu5u" path="res://Assets/Fonts/C&C Red Alert [LAN].ttf" id="1_gd3qs"]
+[ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Styles/main_theme.tres" id="1_gd3qs"]
+[ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="2_qahy3"]
+[ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Scenes/GUI/cursor_light.gd" id="3_flbej"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_sbkb1"]
-font = ExtResource("1_gd3qs")
-font_size = 90
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mlt8"]
+shader = ExtResource("2_qahy3")
 
-[sub_resource type="Theme" id="Theme_flbej"]
-default_font = ExtResource("1_gd3qs")
+[sub_resource type="Gradient" id="Gradient_gd3qs"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_flbej"]
+gradient = SubResource("Gradient_gd3qs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.794872, 0.84188)
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -24,21 +32,27 @@ offset_left = 67.0
 offset_top = 104.0
 offset_right = 1122.0
 offset_bottom = 228.0
-text = "InsertNameHere XD"
-label_settings = SubResource("LabelSettings_sbkb1")
+theme = ExtResource("1_gd3qs")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 80
+text = "INSERTNAMEHERE XD"
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 502.0
-offset_top = 300.0
-offset_right = 661.0
-offset_bottom = 331.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_flbej")
-theme_type_variation = &"FlatButton"
-text = "start that thang jim"
+material = SubResource("ShaderMaterial_5mlt8")
+layout_mode = 0
+offset_left = 371.0
+offset_top = 304.0
+offset_right = 685.0
+offset_bottom = 351.0
+theme = ExtResource("1_gd3qs")
+text = "STARTER ERP JIMMY"
 script = ExtResource("1_cfg0g")
+
+[node name="CursorLight" type="PointLight2D" parent="."]
+scale = Vector2(3, 3)
+texture = SubResource("GradientTexture2D_flbej")
+script = ExtResource("3_flbej")
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

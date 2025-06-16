@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5c7s814d6wf0"
-path="res://.godot/imported/Enemy-Sprites.png-8b88ceaed8553a8f803dd1ae269251df.ctex"
+uid="uid://oc76rdywptka"
+path="res://.godot/imported/lamp_texture.png-280eeff69e6f6b56103b4cd13c5872f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy-Sprites.png"
-dest_files=["res://.godot/imported/Enemy-Sprites.png-8b88ceaed8553a8f803dd1ae269251df.ctex"]
+source_file="res://Assets/Hospital/lamp_texture.png"
+dest_files=["res://.godot/imported/lamp_texture.png-280eeff69e6f6b56103b4cd13c5872f1.ctex"]
 
 [params]
 

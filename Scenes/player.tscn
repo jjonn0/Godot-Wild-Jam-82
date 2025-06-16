@@ -490,6 +490,7 @@ size = Vector2(7, 13)
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "animation_player", "flashlight", "state_machine") groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_vgqql")
+jump_height = 30.0
 animated_sprite = NodePath("AnimatedPlayerSprite")
 animation_player = NodePath("AnimationPlayer")
 flashlight = NodePath("PlayerLight")
@@ -515,6 +516,10 @@ shape = SubResource("RectangleShape2D_i3pqv")
 zoom = Vector2(5, 5)
 limit_left = 0
 limit_bottom = 0
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
 
 [node name="PlayerLight" type="PointLight2D" parent="."]
 visible = false
