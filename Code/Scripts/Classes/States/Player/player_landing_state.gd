@@ -1,11 +1,11 @@
+# Player Landing State
 extends PlayerState
 
 func state_enter() -> void:
-	
-	animation_player.play("landing")
-	
 	player.allow_h_input = self.allow_h_input
 	player.allow_v_input = self.allow_v_input
+	
+	animation_player.play("landing")
 
 func state_process(delta : float) -> void:
 	

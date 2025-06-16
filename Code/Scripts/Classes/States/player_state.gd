@@ -1,3 +1,4 @@
+# Player State Class
 @icon("res://Assets/Icons/player_icon.png")
 extends State
 class_name PlayerState

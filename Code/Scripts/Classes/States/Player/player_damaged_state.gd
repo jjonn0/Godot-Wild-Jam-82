@@ -1,6 +1,9 @@
+# Player Damaged State
 extends PlayerState
 
 func state_enter() -> void:
+	player.allow_h_input = self.allow_h_input
+	player.allow_v_input = self.allow_v_input
 	
 	animation_player.play("take_damage")
 

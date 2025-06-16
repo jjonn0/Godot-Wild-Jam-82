@@ -1,7 +1,10 @@
+# Player specific State Machine
 extends StateMachine
 
 @export var player : CharacterBody2D
 
+# On ready, check for all child states.
+# If an initial state was chosen, set as current state.
 func _ready() -> void:
 	for child in get_children():
 		if child is State:

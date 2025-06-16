@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bijahq8tbec48" path="res://Code/Scripts/Classes/States/Player/player_walking_state.gd" id="10_tx1dd"]
 [ext_resource type="Script" uid="uid://crqm72e1y3ljh" path="res://Code/Scripts/Classes/States/Player/player_falling_state.gd" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://ddoawjdhkpdkh" path="res://Code/Scripts/Classes/States/Player/player_damaged_state.gd" id="12_ukyrk"]
-[ext_resource type="Script" uid="uid://djdjq0cr7jidf" path="res://Scenes/player_death_state.gd" id="13_ukyrk"]
+[ext_resource type="Script" uid="uid://djdjq0cr7jidf" path="res://Code/Scripts/Classes/States/Player/player_death_state.gd" id="13_ukyrk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gymyn"]
 shader = ExtResource("1_gymyn")
@@ -487,12 +487,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(7, 13)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "animation_player", "flashlight") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "animation_player", "flashlight", "state_machine") groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_vgqql")
 animated_sprite = NodePath("AnimatedPlayerSprite")
 animation_player = NodePath("AnimationPlayer")
 flashlight = NodePath("PlayerLight")
+state_machine = NodePath("PlayerStateMachine")
 
 [node name="AnimatedPlayerSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_gymyn")
@@ -516,6 +517,7 @@ limit_left = 0
 limit_bottom = 0
 
 [node name="PlayerLight" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(85, 2)
 blend_mode = 2
 texture = ExtResource("3_tx1dd")

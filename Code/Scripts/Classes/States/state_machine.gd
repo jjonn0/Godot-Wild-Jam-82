@@ -6,6 +6,8 @@ var states : Dictionary = {}
 
 @export var initial_state : State
 
+# On ready, check for all child states.
+# If an initial state was chosen, set as current state.
 func _ready() -> void:
 	for child in get_children():
 		if child is State:
@@ -24,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.state_physics(delta)
 
+# Transition to a new state.
 func _on_state_transition(calling_state, new_state_name) -> void:
 	
 	# If the calling state is not the current state, ignore.

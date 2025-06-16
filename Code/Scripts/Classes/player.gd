@@ -21,6 +21,7 @@ signal respawn(player : CharacterBody2D)
 @export var animated_sprite : AnimatedSprite2D
 @export var animation_player : AnimationPlayer
 @export var flashlight : PointLight2D
+@export var state_machine : StateMachine
 
 var direction_input : float
 var allow_h_input : bool = false
@@ -28,7 +29,7 @@ var allow_v_input : bool = false
 var health : int = max_health
 var dead : bool = false
 var current_invulnerability : float = 0.0
-var flashlight_state : bool = true
+var flashlight_state : bool = false
 var current_flashlight_time : float
 
 
@@ -47,7 +48,7 @@ func _process(delta: float) -> void:
 	if flashlight_state and current_flashlight_time > 0:
 		current_flashlight_time -= delta
 	
-	if !animation_player.is_playing() and dead:
+	if state_machine.current_state != $PlayerStateMachine/Death and dead:
 		respawn.emit(self)
 
 func _physics_process(_delta: float) -> void:
@@ -68,7 +69,7 @@ func _physics_process(_delta: float) -> void:
 		rotation = deg_to_rad(0)
 	
 	# Handle flashlight
-	if Input.is_action_just_pressed("flashlight_toggle"):
+	if Input.is_action_just_pressed("flashlight_toggle") and !dead:
 		toggle_light()
 	
 	move_and_slide()
@@ -86,13 +87,16 @@ func take_damage(damage_points : int) -> void:
 	if health < 0:
 		on_death.emit()
 		dead = true
+		flashlight_state = true
+		toggle_light()
 	else:
 		on_damage.emit(health)
 
 func reset() -> void:
 	health = max_health
-	current_invulnerability = 0.0
+	current_invulnerability = 0.1
 	dead = false
+	flashlight_state = false
 
 func flash(value : float) -> void:
 	

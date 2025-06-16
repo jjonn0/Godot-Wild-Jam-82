@@ -1,3 +1,4 @@
+# Basic enemy A.I. following a Path2D
 class_name BasicEnemy extends Node2D
 
 @export var sprite : AnimatedSprite2D

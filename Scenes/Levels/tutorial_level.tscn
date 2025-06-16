@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cypqkyk734gug"]
+[gd_scene load_steps=13 format=4 uid="uid://cypqkyk734gug"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_tm4ns"]
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_1pi2y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvl7e3isi1mj8" path="res://Assets/test_background.png" id="2_f5ku8"]
 [ext_resource type="PackedScene" uid="uid://b1cxuuohh707b" path="res://Scenes/player_spawn.tscn" id="3_08y06"]
 [ext_resource type="PackedScene" uid="uid://4is3hjp3aydl" path="res://Scenes/Enemies/tall_enemy.tscn" id="6_ohf4p"]
+[ext_resource type="PackedScene" uid="uid://cp18dx1kt1ic8" path="res://Scenes/Props/lamp.tscn" id="7_1pi2y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4kucd"]
 shader = ExtResource("2_1pi2y")
@@ -38,9 +39,9 @@ sources/1 = SubResource("TileSetAtlasSource_f5ku8")
 
 [sub_resource type="Curve2D" id="Curve2D_tbcxr"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 4
+point_count = 3
 
 [node name="TutorialLevel" type="Node"]
 script = ExtResource("1_tm4ns")
@@ -82,3 +83,6 @@ path = NodePath("..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.329158, 0.329158, 0.329158, 1)
+
+[node name="Lamp" parent="." instance=ExtResource("7_1pi2y")]
+position = Vector2(83, -114)

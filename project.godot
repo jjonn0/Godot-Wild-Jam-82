@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="GameJam"
+config/name="InsertNameHere"
+config/description="Credits:
+C&C Red Alert.tff Made by: n3trunn3r Link: https://www.dafont.com/c-c-red-alert-inet.font#null"
 run/main_scene="uid://bs5lo2i0ufcs7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
