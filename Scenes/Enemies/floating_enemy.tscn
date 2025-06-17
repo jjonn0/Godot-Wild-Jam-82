@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="3_8o1ib"]
 
 [sub_resource type="Curve2D" id="Curve2D_qphn7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bgjx3"]
 shader = ExtResource("2_qphn7")

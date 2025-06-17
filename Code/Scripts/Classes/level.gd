@@ -111,13 +111,15 @@ func search_for_nodes(search_children : Array[Node], return_children : Array[Nod
 func global_haunting(delta : float) -> void:
 	
 	if current_haunt_time > 0.0:
-		
-		for light in lights:
 			
+			
+		for light in lights:
+				
 			var r_energy = randf()
 			light.energy = r_energy
-			
-			current_haunt_time -= delta
+		
+		current_haunt_time -= delta
+		
 	elif current_haunt_time > -1.0:
 		for light in lights:
 			

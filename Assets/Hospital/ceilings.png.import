@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duom42syahjyx"
-path="res://.godot/imported/hospital_tiles.png-90b2eb6997b46f5de447eeac9a2d6173.ctex"
+uid="uid://camv22dlgglfw"
+path="res://.godot/imported/ceilings.png-124705be5a8092efc80c08494cf5c62c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Hospital/hospital_tiles.png"
-dest_files=["res://.godot/imported/hospital_tiles.png-90b2eb6997b46f5de447eeac9a2d6173.ctex"]
+source_file="res://Assets/Hospital/ceilings.png"
+dest_files=["res://.godot/imported/ceilings.png-124705be5a8092efc80c08494cf5c62c.ctex"]
 
 [params]
 

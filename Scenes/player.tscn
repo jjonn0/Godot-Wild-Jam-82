@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cvnayb6yojn0l"]
+[gd_scene load_steps=71 format=3 uid="uid://cvnayb6yojn0l"]
 
 [ext_resource type="Shader" uid="uid://dplfim0ur35s3" path="res://Code/Shaders/player_shader.gdshader" id="1_gymyn"]
 [ext_resource type="Script" uid="uid://b05fw2tonsfka" path="res://Code/Scripts/Classes/player.gd" id="1_vgqql"]
@@ -487,6 +487,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(7, 13)
 
+[sub_resource type="Gradient" id="Gradient_7dp3o"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.387909)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h4iuc"]
+gradient = SubResource("Gradient_7dp3o")
+fill_to = Vector2(1, 1)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "animation_player", "flashlight", "state_machine") groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_vgqql")
@@ -527,21 +536,25 @@ position = Vector2(85, 2)
 blend_mode = 2
 texture = ExtResource("3_tx1dd")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_h4iuc")
+
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state")]
 script = ExtResource("5_tx1dd")
 player = NodePath("..")
 initial_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://bwnrneigafo13"
 
-[node name="Idle" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animation_player")]
-script = ExtResource("5_fkybt")
-animation_player = NodePath("../../AnimationPlayer")
-
 [node name="Jumping" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x3wgy")
 allow_v_input = false
 animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://cegmtuuv2ux6r"
+
+[node name="Idle" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animation_player")]
+script = ExtResource("5_fkybt")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="JumpWindup" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("7_f1ek2")
@@ -552,7 +565,6 @@ metadata/_custom_type_script = "uid://cegmtuuv2ux6r"
 
 [node name="Landing" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("9_gymyn")
-allow_h_input = false
 allow_v_input = false
 animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://cegmtuuv2ux6r"

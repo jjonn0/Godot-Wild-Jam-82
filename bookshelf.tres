@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://rtemgfmm01of"]
+
+[ext_resource type="Texture2D" uid="uid://cbr53f87wf1k1" path="res://Assets/Hospital/obstacles_tutorial.png" id="3_yhdkq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t0swk"]
+texture = ExtResource("3_yhdkq")
+texture_region_size = Vector2i(32, 35)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -17.5, 16, -17.5, 16, 17.5, -16, 17.5)
+
+[resource]
+tile_size = Vector2i(32, 35)
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_t0swk")

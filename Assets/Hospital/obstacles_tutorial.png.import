@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duom42syahjyx"
-path="res://.godot/imported/hospital_tiles.png-90b2eb6997b46f5de447eeac9a2d6173.ctex"
+uid="uid://cbr53f87wf1k1"
+path="res://.godot/imported/obstacles_tutorial.png-99fb5d2d95f363ed758cb572497532f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Hospital/hospital_tiles.png"
-dest_files=["res://.godot/imported/hospital_tiles.png-90b2eb6997b46f5de447eeac9a2d6173.ctex"]
+source_file="res://Assets/Hospital/obstacles_tutorial.png"
+dest_files=["res://.godot/imported/obstacles_tutorial.png-99fb5d2d95f363ed758cb572497532f0.ctex"]
 
 [params]
 

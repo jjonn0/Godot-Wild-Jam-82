@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://gry7567bti2x"]
+[gd_scene load_steps=6 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
 [ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Other/Styles/main_theme.tres" id="1_gd3qs"]
-[ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="2_qahy3"]
 [ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mlt8"]
-shader = ExtResource("2_qahy3")
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
@@ -43,7 +39,6 @@ theme_override_font_sizes/font_size = 80
 text = "INSERTNAMEHERE XD"
 
 [node name="Button" type="Button" parent="."]
-material = SubResource("ShaderMaterial_5mlt8")
 layout_mode = 0
 offset_left = 371.0
 offset_top = 304.0

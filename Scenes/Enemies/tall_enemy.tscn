@@ -6,10 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="3_b4gsy"]
 
 [sub_resource type="Curve2D" id="Curve2D_byglg"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -57, 0, 0, 0, 0, 0, 98, 0)
-}
-point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wxjq"]
 shader = ExtResource("2_b4gsy")
@@ -193,7 +189,6 @@ size = Vector2(8, 17)
 curve = SubResource("Curve2D_byglg")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(-57, 0)
 rotates = false
 
 [node name="TallEnemy" type="Node2D" parent="PathFollow2D" node_paths=PackedStringArray("sprite", "path")]

@@ -11,9 +11,9 @@ size = Vector2(3, 4)
 shader = ExtResource("2_mfik2")
 
 [sub_resource type="Gradient" id="Gradient_bekw5"]
-interpolation_mode = 2
+interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.837662)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.585062, 0.585062, 0.585062, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uno5e"]
 gradient = SubResource("Gradient_bekw5")
