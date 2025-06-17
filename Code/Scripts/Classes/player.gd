@@ -3,6 +3,8 @@ class_name Player extends CharacterBody2D
 signal on_damage(health : int)
 signal on_death()
 signal respawn(player : CharacterBody2D)
+signal update_health(health : int)
+signal update_charge(time_left : float)
 
 @export_category("Player Settings")
 @export var speed : float = 50.0
@@ -32,7 +34,6 @@ var current_invulnerability : float = 0.0
 var flashlight_state : bool = false
 var current_flashlight_time : float
 
-
 @onready var jump_velocity : float = ((2.0 * jump_height) / time_to_peak) * -1.0
 @onready var jump_gravity : float = ((-2.0 * jump_height) / pow(time_to_peak, 2)) * -1.0
 @onready var fall_velocity : float = ((-2.0 * jump_height) / pow(time_to_land, 2)) * -1.0
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 	
 	if flashlight_state and current_flashlight_time > 0:
 		current_flashlight_time -= delta
+		update_charge.emit(current_flashlight_time)
 	
 	if state_machine.current_state != $PlayerStateMachine/Death and dead:
 		respawn.emit(self)
@@ -85,6 +87,8 @@ func take_damage(damage_points : int) -> void:
 	health -= damage_points
 	current_invulnerability = invulnerability
 	if health < 0:
+		health = 0
+		update_health.emit(health)
 		on_death.emit()
 		dead = true
 		flashlight_state = true
@@ -97,6 +101,10 @@ func reset() -> void:
 	current_invulnerability = 0.1
 	dead = false
 	flashlight_state = false
+	current_flashlight_time = flashlight_duration
+	
+	update_health.emit(health)
+	update_charge.emit(current_flashlight_time)
 
 func flash(value : float) -> void:
 	

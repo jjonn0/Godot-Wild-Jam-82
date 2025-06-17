@@ -1,5 +1,7 @@
 class_name GameManager extends Node
 
+signal on_2d_scene_change
+
 @export var world_2d : Node2D
 @export var gui : Control
 
@@ -43,5 +45,6 @@ func change_2d_scene(new_scene : String, delete : bool = true, keep_running : bo
 			world_2d.current_2d_scene.remove_child() # Remove scene but save in memory.
 	
 	var new = load(new_scene).instantiate()
-	call_deferred("add_child", new)
+	world_2d.call_deferred("add_child", new)
 	current_2d_scene = new
+	on_2d_scene_change.emit()

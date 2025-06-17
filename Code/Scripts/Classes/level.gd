@@ -1,25 +1,43 @@
 class_name Level extends Node
 
 @export var level_number : int
+@export var haunt_length : float = 1.5
 
 var this_level : int
-var current_spawn
+var current_spawn : Marker2D
+var lights : Dictionary
+#var active_haunt : bool = false
+var current_haunt_time : float
 
 @onready var player_scene = preload("res://Scenes/player.tscn")
 
 func _ready() -> void:
 	
 	spawn_player()
+	
 	prepare_level_unload()
+	
+	var light_nodes = search_for_nodes(get_children(), [], "hauntable_light")
+	for node in light_nodes:
+		
+		lights[node] = node.energy
+
+func _process(delta: float) -> void:
+	
+	global_haunting(delta)
 
 func spawn_player() -> void:
 	
 	# Search for spawn point.
 	for child in get_children():
 		
-		if child.is_in_group("player_spawn"):
+		# Use a recursive function to search through all lower nodes.
+		# Returns the player spawn marker or null.
+		var player_spawn : Marker2D = search_for_node(child, "player_spawn")
+		
+		if player_spawn != null:
 			
-			current_spawn = child
+			current_spawn = player_spawn
 			break
 	
 	if current_spawn == null:
@@ -29,8 +47,10 @@ func spawn_player() -> void:
 	var player : CharacterBody2D = player_scene.instantiate()
 	player.position = current_spawn.position
 	
-	add_child(player)
+	current_spawn.get_parent().add_child(player)
 	player.respawn.connect(on_player_death)
+	player.on_damage.connect(start_haunting)
+	Global.player = player
 
 func prepare_level_unload() -> void:
 	
@@ -49,3 +69,61 @@ func on_player_death(player : CharacterBody2D) -> void:
 	if current_spawn != null:
 		player.position = current_spawn.position
 		player.reset()
+
+# Uses recursion to search through all lower nodes.
+# If the current node is not the player spawn, search through its children.
+# After all nodes have been exhausted, returns null.
+func search_for_node(child : Node, group : String) -> Node:
+	
+	var children : Array[Node] = child.get_children()
+	
+	if child.is_in_group(group):
+		
+		return child
+	
+	for c in children:
+		
+		if c.is_in_group(group):
+			
+			return c
+		
+		search_for_node(c, group)
+	
+	return null
+
+func search_for_nodes(search_children : Array[Node], return_children : Array[Node], group : String) -> Array[Node]:
+	
+	
+	# For every child in the node:
+	for child in search_children:
+		
+		# If the child matches, append the child.
+		if child.is_in_group(group):
+			return_children.append(child)
+		
+		if search_children.is_empty():
+			return return_children
+		
+		search_for_nodes(child.get_children(), return_children, group)
+	
+	return return_children
+
+func global_haunting(delta : float) -> void:
+	
+	if current_haunt_time > 0.0:
+		
+		for light in lights:
+			
+			var r_energy = randf()
+			light.energy = r_energy
+			
+			current_haunt_time -= delta
+	elif current_haunt_time > -1.0:
+		for light in lights:
+			
+			light.energy = lights[light]
+		current_haunt_time = -1.0
+
+func start_haunting(health : int) -> void:
+	
+	current_haunt_time = haunt_length

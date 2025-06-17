@@ -1,6 +1,45 @@
-[gd_scene format=3 uid="uid://1d37x6qd2a5x"]
+[gd_scene load_steps=4 format=3 uid="uid://1d37x6qd2a5x"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[sub_resource type="GDScript" id="GDScript_74o67"]
+script/source = "extends CanvasLayer
+
+@export var lives : Label
+@export var energy_bar : TextureProgressBar
+
+var player
+
+func _process(delta: float) -> void:
+	
+	if player == null:
+		player = Global.player
+		
+		if player != null:
+			Global.player.update_health.connect(update_player_lives)
+			Global.player.on_damage.connect(update_player_lives)
+			Global.player.update_charge.connect(update_player_energy)
+			update_player_lives(Global.player.health)
+
+func update_player_lives(health : int) -> void:
+	
+	lives.text = \"Lives : \" + str(health)
+
+func update_player_energy(time_left : float) -> void:
+	
+	var new_value : float = (time_left / player.flashlight_duration) * 100.0
+	
+	energy_bar.value = new_value
+"
+
+[sub_resource type="Gradient" id="Gradient_74o67"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfrcj"]
+gradient = SubResource("Gradient_74o67")
+
+[node name="HudCanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("lives", "energy_bar")]
+script = SubResource("GDScript_74o67")
+lives = NodePath("Hud/Lives")
+energy_bar = NodePath("Hud/Energy")
 
 [node name="Hud" type="Control" parent="."]
 layout_mode = 3
@@ -11,15 +50,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Lives" type="Label" parent="Hud"]
-layout_mode = 0
 offset_left = 28.0
 offset_top = 1.0
 offset_right = 165.0
 offset_bottom = 80.0
 text = "Lives: x"
 
-[node name="Energy" type="ProgressBar" parent="Hud"]
-layout_mode = 0
+[node name="Energy" type="TextureProgressBar" parent="Hud"]
 offset_left = 882.0
 offset_right = 1121.0
 offset_bottom = 27.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_pfrcj")

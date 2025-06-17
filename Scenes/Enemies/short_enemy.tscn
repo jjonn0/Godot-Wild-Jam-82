@@ -1,8 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://hbjk7u1ci2yv"]
+[gd_scene load_steps=31 format=3 uid="uid://hbjk7u1ci2yv"]
 
+[ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="1_g4ft5"]
 [ext_resource type="Script" uid="uid://b7r2jc82qyaq1" path="res://Code/Scripts/Classes/basic_enemy.gd" id="1_ittq4"]
 [ext_resource type="Texture2D" uid="uid://b5c7s814d6wf0" path="res://Assets/enemy_sprites.png" id="2_g4ft5"]
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="3_6qoua"]
+
+[sub_resource type="Curve2D" id="Curve2D_ittq4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4ft5"]
+shader = ExtResource("1_g4ft5")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iifgy"]
 atlas = ExtResource("2_g4ft5")
@@ -179,21 +185,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esbnm"]
 size = Vector2(7, 13)
 
-[node name="ShortEnemy" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="ShortEnemy" type="Path2D"]
+curve = SubResource("Curve2D_ittq4")
+script = ExtResource("1_ittq4")
+metadata/_custom_type_script = "uid://b7r2jc82qyaq1"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+
+[node name="ShortEnemy" type="Node2D" parent="PathFollow2D" node_paths=PackedStringArray("sprite", "path")]
 script = ExtResource("1_ittq4")
 sprite = NodePath("AnimatedSprite2D")
 speed = 25.0
+path = NodePath("..")
 metadata/_custom_type_script = "uid://b7r2jc82qyaq1"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D/ShortEnemy"]
+material = SubResource("ShaderMaterial_g4ft5")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_bwdqx")
 animation = &"short"
 autoplay = "short"
 
-[node name="Killzone" parent="." instance=ExtResource("3_6qoua")]
+[node name="Killzone" parent="PathFollow2D/ShortEnemy" instance=ExtResource("3_6qoua")]
 damage_points = 1
 
-[node name="KillShape" type="CollisionShape2D" parent="Killzone"]
+[node name="KillShape" type="CollisionShape2D" parent="PathFollow2D/ShortEnemy/Killzone"]
 position = Vector2(0.5, -6.5)
 shape = SubResource("RectangleShape2D_esbnm")

@@ -1,16 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://gry7567bti2x"]
 
-[ext_resource type="Script" uid="uid://dwy3psc1rdomj" path="res://Code/Scripts/start_game_button_script.gd" id="1_cfg0g"]
-[ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Styles/main_theme.tres" id="1_gd3qs"]
+[ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
+[ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Other/Styles/main_theme.tres" id="1_gd3qs"]
 [ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="2_qahy3"]
-[ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Scenes/GUI/cursor_light.gd" id="3_flbej"]
+[ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5mlt8"]
 shader = ExtResource("2_qahy3")
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.806045, 0.901763, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.625597, 0.625597, 0.625597, 1, 0.288518, 0.288518, 0.288518, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_flbej"]
 gradient = SubResource("Gradient_gd3qs")
@@ -25,8 +26,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5mlt8")
 
 [node name="Label" type="Label" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 67.0
 offset_top = 104.0
@@ -48,11 +51,13 @@ offset_right = 685.0
 offset_bottom = 351.0
 theme = ExtResource("1_gd3qs")
 text = "STARTER ERP JIMMY"
-script = ExtResource("1_cfg0g")
 
 [node name="CursorLight" type="PointLight2D" parent="."]
 scale = Vector2(3, 3)
+blend_mode = 2
+range_z_max = 0
 texture = SubResource("GradientTexture2D_flbej")
 script = ExtResource("3_flbej")
 
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

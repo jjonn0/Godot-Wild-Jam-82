@@ -51,7 +51,7 @@ material = SubResource("ShaderMaterial_bw853")
 position = Vector2(0, 20)
 texture = ExtResource("2_1yfcf")
 
-[node name="PointLight2D" type="PointLight2D" parent="LampSegment"]
+[node name="PointLight2D" type="PointLight2D" parent="LampSegment" groups=["hauntable_light"]]
 position = Vector2(0.5, 91)
 rotation = 0.785398
 energy = 1.2
