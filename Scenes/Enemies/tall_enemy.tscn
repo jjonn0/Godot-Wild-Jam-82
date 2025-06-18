@@ -1,11 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://4is3hjp3aydl"]
+[gd_scene load_steps=30 format=3 uid="uid://4is3hjp3aydl"]
 
 [ext_resource type="Script" uid="uid://b7r2jc82qyaq1" path="res://Code/Scripts/Classes/basic_enemy.gd" id="1_fm08i"]
 [ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="2_b4gsy"]
 [ext_resource type="Texture2D" uid="uid://b5c7s814d6wf0" path="res://Assets/enemy_sprites.png" id="2_byglg"]
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="3_b4gsy"]
-
-[sub_resource type="Curve2D" id="Curve2D_byglg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wxjq"]
 shader = ExtResource("2_b4gsy")
@@ -185,29 +183,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 size = Vector2(8, 17)
 
-[node name="TallEnemy" type="Path2D"]
-curve = SubResource("Curve2D_byglg")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
-rotates = false
-
-[node name="TallEnemy" type="Node2D" parent="PathFollow2D" node_paths=PackedStringArray("sprite", "path")]
+[node name="TallEnemy" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_fm08i")
 sprite = NodePath("AnimatedSprite2D")
 speed = 15.0
-path = NodePath("..")
 metadata/_custom_type_script = "uid://b7r2jc82qyaq1"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D/TallEnemy"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_4wxjq")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_dxifv")
 animation = &"tall"
 autoplay = "tall"
 
-[node name="Killzone" parent="PathFollow2D/TallEnemy" instance=ExtResource("3_b4gsy")]
+[node name="Killzone" parent="." instance=ExtResource("3_b4gsy")]
 damage_points = 2
 
-[node name="KillShape" type="CollisionShape2D" parent="PathFollow2D/TallEnemy/Killzone"]
+[node name="KillShape" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(2, -8.5)
 shape = SubResource("RectangleShape2D_qi2p4")

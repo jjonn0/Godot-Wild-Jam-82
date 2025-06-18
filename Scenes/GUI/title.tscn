@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
-[ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Other/Styles/main_theme.tres" id="1_gd3qs"]
+[ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Assets/main_theme.tres" id="1_gd3qs"]
 [ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]

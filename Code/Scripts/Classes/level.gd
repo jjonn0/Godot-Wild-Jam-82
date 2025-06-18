@@ -1,26 +1,32 @@
 class_name Level extends Node
 
-@export var level_number : int
 @export var haunt_length : float = 1.5
+@export var camera_left_cutoff : int = -1000000
+@export var camera_top_cutoff : int = -1000000
+@export var camera_right_cutoff : int = 1000000
+@export var camera_bottom_cutoff : int = 1000000
 
 var this_level : int
 var current_spawn : Marker2D
 var lights : Dictionary
 #var active_haunt : bool = false
 var current_haunt_time : float
+var player : CharacterBody2D
 
 @onready var player_scene = preload("res://Scenes/player.tscn")
 
 func _ready() -> void:
 	
 	spawn_player()
-	
+	set_camera()
 	prepare_level_unload()
 	
+	# Find all PointLight2Ds and record their default alpha value.
 	var light_nodes = search_for_nodes(get_children(), [], "hauntable_light")
 	for node in light_nodes:
 		
-		lights[node] = node.energy
+		#lights[node] = node.energy
+		lights[node] = node.color.a
 
 func _process(delta: float) -> void:
 	
@@ -44,7 +50,7 @@ func spawn_player() -> void:
 		print("No spawn point found!")
 		return
 	
-	var player : CharacterBody2D = player_scene.instantiate()
+	player = player_scene.instantiate()
 	player.position = current_spawn.position
 	
 	current_spawn.get_parent().add_child(player)
@@ -116,16 +122,25 @@ func global_haunting(delta : float) -> void:
 		for light in lights:
 				
 			var r_energy = randf()
-			light.energy = r_energy
+			light.color.a = r_energy
 		
 		current_haunt_time -= delta
 		
 	elif current_haunt_time > -1.0:
 		for light in lights:
 			
-			light.energy = lights[light]
+			light.color.a = lights[light]
 		current_haunt_time = -1.0
 
 func start_haunting(health : int) -> void:
 	
 	current_haunt_time = haunt_length
+
+func set_camera() -> void:
+	
+	var camera : Camera2D = search_for_node(player, "player_camera")
+	
+	camera.set_limit(SIDE_BOTTOM, camera_bottom_cutoff)
+	camera.set_limit(SIDE_RIGHT, camera_right_cutoff)
+	camera.set_limit(SIDE_TOP, camera_top_cutoff)
+	camera.set_limit(SIDE_LEFT, camera_left_cutoff)

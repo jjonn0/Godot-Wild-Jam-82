@@ -11,3 +11,6 @@ func state_process(delta : float) -> void:
 	
 	if !animation_player.is_playing():
 		state_transition.emit(self, "idle")
+	
+	if Input.is_action_just_pressed("jump"):
+		state_transition.emit(self, "jumpwindup")

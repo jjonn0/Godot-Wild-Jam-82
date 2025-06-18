@@ -32,6 +32,7 @@ player_spawn="Where the player spawns."
 player_exit="Where the player exits."
 player=""
 hauntable_light="Any Point2D that can be affected by the haunt mechanic."
+player_camera="The player's camera."
 
 [input]
 

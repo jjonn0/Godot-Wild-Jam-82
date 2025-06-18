@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcsalj4wj0sxq"
-path="res://.godot/imported/hospital_walls.png-8520430c6689ce522ad99583bc9a33c4.ctex"
+uid="uid://cjlg4hq0fbad2"
+path="res://.godot/imported/forestlamp_sized-down.png-8c26cc64be378f1cf928e458eb181b16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Hospital/hospital_walls.png"
-dest_files=["res://.godot/imported/hospital_walls.png-8520430c6689ce522ad99583bc9a33c4.ctex"]
+source_file="res://Assets/Forest/forestlamp_sized-down.png"
+dest_files=["res://.godot/imported/forestlamp_sized-down.png-8c26cc64be378f1cf928e458eb181b16.ctex"]
 
 [params]
 

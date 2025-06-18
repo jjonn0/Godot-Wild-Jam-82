@@ -12,3 +12,10 @@ func state_process(_delta : float) -> void:
 	if !animation_player.is_playing():
 		
 		state_transition.emit(self, "walking")
+
+func state_physics(delta : float) -> void:
+	
+	player.velocity.y += player.fall_velocity * delta
+	
+	if player.is_on_floor():
+		state_transition.emit(self, "landing")

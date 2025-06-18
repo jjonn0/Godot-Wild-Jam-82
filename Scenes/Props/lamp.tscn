@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_mfik2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjuyy"]
-size = Vector2(3, 4)
+size = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bw853"]
 shader = ExtResource("2_mfik2")
@@ -13,7 +13,7 @@ shader = ExtResource("2_mfik2")
 [sub_resource type="Gradient" id="Gradient_bekw5"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.837662)
-colors = PackedColorArray(0.585062, 0.585062, 0.585062, 1, 0, 0, 0, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uno5e"]
 gradient = SubResource("Gradient_bekw5")
@@ -25,7 +25,7 @@ fill_to = Vector2(0.5, 1)
 [node name="LampAnchor" type="StaticBody2D" parent="."]
 
 [node name="LampAnchorShape" type="CollisionShape2D" parent="LampAnchor"]
-position = Vector2(0.5, 0)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_hjuyy")
 
 [node name="PinJoint2D2" type="PinJoint2D" parent="."]
@@ -54,8 +54,9 @@ texture = ExtResource("2_1yfcf")
 [node name="PointLight2D" type="PointLight2D" parent="LampSegment" groups=["hauntable_light"]]
 position = Vector2(0.5, 91)
 rotation = 0.785398
+color = Color(0.589096, 0.589096, 0.589096, 1)
 energy = 1.2
 blend_mode = 2
-shadow_enabled = true
+range_z_max = 0
 texture = SubResource("GradientTexture2D_uno5e")
 texture_scale = 1.48

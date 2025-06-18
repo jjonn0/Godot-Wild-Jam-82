@@ -19,8 +19,12 @@ void fragment() {
 void light() {
 	
 	// Remove anything if it is outside the light
+	//if (LIGHT_COLOR.rgb != vec3(0.0, 0.0, 0.0)) {
+		//LIGHT = vec4(LIGHT_COLOR.rgb * lit_color.rgb * LIGHT_ENERGY, LIGHT_COLOR.a);
+	//}
+	
 	if (LIGHT_COLOR.rgb != vec3(0.0, 0.0, 0.0)) {
-		LIGHT = vec4(LIGHT_COLOR.rgb * lit_color.rgb * LIGHT_ENERGY, LIGHT_COLOR.a * LIGHT_ENERGY);
+		LIGHT = vec4(lit_color.rgb * LIGHT_ENERGY * LIGHT_COLOR.rgb, lit_color.a * LIGHT_COLOR.a);
 	}
 	
 }
