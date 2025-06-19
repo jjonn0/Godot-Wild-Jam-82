@@ -1,9 +1,10 @@
 extends Area2D
 
+# How much damage is applied to the player.
 @export var damage_points : int
 
+# Array of all currently colliding bodies.
 var bodies : Array[Node2D]
-var contains_body : bool = true
 
 func _on_body_entered(body: Node2D) -> void:
 	

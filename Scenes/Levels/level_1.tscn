@@ -149,6 +149,7 @@ sources/0 = SubResource("TileSetAtlasSource_iixi8")
 
 [node name="Level1" type="Node"]
 script = ExtResource("1_jv26f")
+camera_bottom_cutoff = 0
 metadata/_custom_type_script = "uid://dfbt6vwhsigl1"
 
 [node name="FloorTileMapLayer" type="TileMapLayer" parent="."]

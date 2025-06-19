@@ -1,12 +1,13 @@
 class_name Level extends Node
 
+# How long light flickering / other haunt effects will last.
 @export var haunt_length : float = 1.5
+# Camera cutoff boundaries.
 @export var camera_left_cutoff : int = -1000000
 @export var camera_top_cutoff : int = -1000000
 @export var camera_right_cutoff : int = 1000000
 @export var camera_bottom_cutoff : int = 1000000
 
-var this_level : int
 var current_spawn : Marker2D
 var lights : Dictionary
 #var active_haunt : bool = false

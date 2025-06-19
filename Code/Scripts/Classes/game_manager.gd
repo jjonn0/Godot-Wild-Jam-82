@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	change_gui_scene(starting_gui_element)
 
+## Removes the current Control scene (if applicable) and adds a new Control scene.
 func change_gui_scene(new_scene : String, delete : bool = true, keep_running : bool = false) -> void:
 	
 	if current_gui_scene != null:
@@ -34,6 +35,7 @@ func change_gui_scene(new_scene : String, delete : bool = true, keep_running : b
 	gui.add_child(new)
 	current_gui_scene = new
 
+## Removes the current Node2D scene (if applicable) and adds a new Node2D scene.
 func change_2d_scene(new_scene : String, delete : bool = true, keep_running : bool = false) -> void:
 	
 	if current_2d_scene != null:

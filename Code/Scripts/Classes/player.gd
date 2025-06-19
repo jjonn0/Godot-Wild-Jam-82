@@ -34,8 +34,11 @@ var current_invulnerability : float = 0.0
 var flashlight_state : bool = false
 var current_flashlight_time : float
 
+# Velocity applied to the player when they jump.
 @onready var jump_velocity : float = ((2.0 * jump_height) / time_to_peak) * -1.0
+# The time from when the player is in the air to the apex of the jump.
 @onready var jump_gravity : float = ((-2.0 * jump_height) / pow(time_to_peak, 2)) * -1.0
+# The time from when the player is at the apex of the jump to when they land.
 @onready var fall_velocity : float = ((-2.0 * jump_height) / pow(time_to_land, 2)) * -1.0
 
 func _ready() -> void:
@@ -86,6 +89,7 @@ func take_damage(damage_points : int) -> void:
 	# Deduct player health
 	health -= damage_points
 	current_invulnerability = invulnerability
+	# If health is below zero, delcare the player dead and update HUD and flashlight
 	if health < 0:
 		health = 0
 		update_health.emit(health)
@@ -96,8 +100,11 @@ func take_damage(damage_points : int) -> void:
 	else:
 		on_damage.emit(health)
 
+# Reset player stats and update HUD.
 func reset() -> void:
 	health = max_health
+	# If the player dies on an enemy, there is a brief window where they can take damage.
+	# This prevents the player from taking damage when respawning.
 	current_invulnerability = 0.1
 	dead = false
 	flashlight_state = false
@@ -106,10 +113,12 @@ func reset() -> void:
 	update_health.emit(health)
 	update_charge.emit(current_flashlight_time)
 
+# Unused
 func flash(value : float) -> void:
 	
 	animated_sprite.set_instance_shader_parameter("flash_value", value)
 
+# Flashlight toggle function.
 func toggle_light() -> void:
 	
 	if flashlight_state:

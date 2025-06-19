@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp18dx1kt1ic8"]
+[gd_scene load_steps=9 format=3 uid="uid://cp18dx1kt1ic8"]
 
 [ext_resource type="PackedScene" uid="uid://bsmff17kvyip" path="res://Scenes/Props/lamp_segment.tscn" id="1_bekw5"]
 [ext_resource type="Texture2D" uid="uid://oc76rdywptka" path="res://Assets/Hospital/lamp_texture.png" id="2_1yfcf"]
@@ -19,6 +19,9 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 gradient = SubResource("Gradient_bekw5")
 fill = 1
 fill_to = Vector2(0.5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw853"]
+size = Vector2(150, 400)
 
 [node name="Lamp" type="Node2D"]
 
@@ -60,3 +63,8 @@ blend_mode = 2
 range_z_max = 0
 texture = SubResource("GradientTexture2D_uno5e")
 texture_scale = 1.48
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("RectangleShape2D_bw853")
