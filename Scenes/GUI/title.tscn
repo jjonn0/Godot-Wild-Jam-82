@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://gry7567bti2x"]
+[gd_scene load_steps=9 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
-[ext_resource type="Theme" uid="uid://fl2u5cuhnu5v" path="res://Assets/main_theme.tres" id="1_gd3qs"]
 [ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
+[ext_resource type="Texture2D" uid="uid://buk8slk0ir5tm" path="res://Assets/GUI/MENUART-UNSEEN.png" id="3_qahy3"]
+[ext_resource type="Texture2D" uid="uid://cyyeq2fc3hlab" path="res://Assets/GUI/Play-Button.png" id="4_qahy3"]
+[ext_resource type="Texture2D" uid="uid://chdflsdixb40m" path="res://Assets/GUI/SETTINGS-UNSEEN.png" id="5_5mlt8"]
+[ext_resource type="Texture2D" uid="uid://8dim1yd83j5a" path="res://Assets/GUI/Exit-UNSEEN.png" id="6_uakdt"]
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
@@ -23,36 +26,60 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5mlt8")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
-z_index = 1
-layout_mode = 0
-offset_left = 67.0
-offset_top = 104.0
-offset_right = 1122.0
-offset_bottom = 228.0
-theme = ExtResource("1_gd3qs")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 18
-theme_override_font_sizes/font_size = 80
-text = "INSERTNAMEHERE XD"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 371.0
-offset_top = 304.0
-offset_right = 685.0
-offset_bottom = 351.0
-theme = ExtResource("1_gd3qs")
-text = "STARTER ERP JIMMY"
-
-[node name="CursorLight" type="PointLight2D" parent="."]
+[node name="CursorLight" type="PointLight2D" parent="CanvasLayer"]
 scale = Vector2(3, 3)
-blend_mode = 2
-range_z_max = 0
+range_layer_max = 100
 texture = SubResource("GradientTexture2D_flbej")
 script = ExtResource("3_flbej")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[node name="BackgroundArt" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qahy3")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -63.0
+offset_right = 464.0
+offset_bottom = 63.0
+grow_vertical = 2
+scale = Vector2(2.5, 2.5)
+theme_override_constants/margin_left = 100
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_qahy3")
+texture_pressed = ExtResource("4_qahy3")
+texture_hover = ExtResource("4_qahy3")
+texture_focused = ExtResource("4_qahy3")
+
+[node name="MenuButton" type="TextureButton" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_5mlt8")
+texture_pressed = ExtResource("5_5mlt8")
+texture_hover = ExtResource("5_5mlt8")
+texture_focused = ExtResource("5_5mlt8")
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_uakdt")
+texture_pressed = ExtResource("6_uakdt")
+texture_hover = ExtResource("6_uakdt")
+texture_focused = ExtResource("6_uakdt")
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/ExitButton" to="." method="_on_exit_button_pressed"]

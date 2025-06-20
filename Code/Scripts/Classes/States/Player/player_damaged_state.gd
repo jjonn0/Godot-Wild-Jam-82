@@ -17,5 +17,5 @@ func state_physics(delta : float) -> void:
 	
 	player.velocity.y += player.fall_velocity * delta
 	
-	if player.is_on_floor():
+	if !animation_player.is_playing() and player.is_on_floor():
 		state_transition.emit(self, "landing")

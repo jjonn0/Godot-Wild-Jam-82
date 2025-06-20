@@ -90,7 +90,7 @@ func take_damage(damage_points : int) -> void:
 	health -= damage_points
 	current_invulnerability = invulnerability
 	# If health is below zero, delcare the player dead and update HUD and flashlight
-	if health < 0:
+	if health <= 0:
 		health = 0
 		update_health.emit(health)
 		on_death.emit()

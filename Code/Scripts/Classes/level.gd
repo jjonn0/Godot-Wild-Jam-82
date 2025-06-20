@@ -69,6 +69,7 @@ func prepare_level_unload() -> void:
 
 func level_unload(next_level : String) -> void:
 	
+	Global.game_manager.change_gui_scene("res://Scenes/GUI/hud.tscn")
 	Global.game_manager.change_2d_scene(next_level)
 
 func on_player_death(player : CharacterBody2D) -> void:

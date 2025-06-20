@@ -18,7 +18,6 @@ func _ready() -> void:
 		initial_state.state_enter()
 		current_state = initial_state
 
-
 func _on_player_on_damage(health: int) -> void:
 	
 	_on_state_transition(current_state, "damaged")
