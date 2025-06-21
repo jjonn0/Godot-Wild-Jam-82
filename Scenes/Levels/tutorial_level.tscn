@@ -250,4 +250,3 @@ shape = SubResource("WorldBoundaryShape2D_c2yeb")
 stream = ExtResource("18_g3l5c")
 volume_db = -20.0
 autoplay = true
-bus = &"Music"

@@ -9,8 +9,10 @@ func state_enter() -> void:
 
 func state_process(delta : float) -> void:
 	
+	player.velocity.y += player.fall_velocity * delta
+	
 	if !animation_player.is_playing():
 		state_transition.emit(self, "idle")
 	
 	if Input.is_action_just_pressed("jump"):
-		state_transition.emit(self, "jumpwindup")
+		state_transition.emit(self, "jumping")
