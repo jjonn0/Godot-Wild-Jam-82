@@ -41,6 +41,9 @@ var current_flashlight_time : float
 # The time from when the player is at the apex of the jump to when they land.
 @onready var fall_velocity : float = ((-2.0 * jump_height) / pow(time_to_land, 2)) * -1.0
 
+@onready var flashlightAudio = $FlashlightAudioPlayer
+@onready var damageAudio = $DamageAudioPlayer
+
 func _ready() -> void:
 	reset()
 
@@ -81,12 +84,12 @@ func _physics_process(_delta: float) -> void:
 
 # Handle player damage.
 func take_damage(damage_points : int) -> void:
-	
 	# If the player is invulnerable, ignore.
 	if current_invulnerability > 0:
 		return
 	
 	# Deduct player health
+	damageAudio.play()
 	health -= damage_points
 	current_invulnerability = invulnerability
 	# If health is below zero, delcare the player dead and update HUD and flashlight
@@ -120,7 +123,7 @@ func flash(value : float) -> void:
 
 # Flashlight toggle function.
 func toggle_light() -> void:
-	
+	flashlightAudio.play()
 	if flashlight_state:
 		flashlight_state = false
 	else:

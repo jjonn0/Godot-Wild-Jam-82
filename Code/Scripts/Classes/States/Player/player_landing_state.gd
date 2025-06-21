@@ -14,7 +14,3 @@ func state_process(delta : float) -> void:
 	
 	if Input.is_action_just_pressed("jump"):
 		state_transition.emit(self, "jumpwindup")
-
-func state_physics(delta : float) -> void:
-	
-	player.velocity.y += player.fall_velocity * delta

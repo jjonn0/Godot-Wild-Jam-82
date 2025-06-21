@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cypqkyk734gug"]
+[gd_scene load_steps=33 format=4 uid="uid://cypqkyk734gug"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_tm4ns"]
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_1pi2y"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bj635jty7nn7o" path="res://Scenes/Enemies/floating_enemy.tscn" id="14_hj161"]
 [ext_resource type="Material" uid="uid://03kjfvir0olp" path="res://Assets/dust_particle_material.tres" id="16_5pgco"]
 [ext_resource type="PackedScene" uid="uid://c32r22ucltpfa" path="res://Scenes/player_exit.tscn" id="17_w685s"]
+[ext_resource type="AudioStream" uid="uid://ekpjcrpv4qif" path="res://Assets/Audio/Music/Hospital Level.mp3" id="18_g3l5c"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w685s"]
 normal = Vector2(6.33992e-06, -1)
@@ -244,3 +245,9 @@ next_level = "res://Scenes/Levels/level_1.tscn"
 position = Vector2(2144, -67)
 rotation = 1.57079
 shape = SubResource("WorldBoundaryShape2D_c2yeb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_g3l5c")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

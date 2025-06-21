@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cvnayb6yojn0l"]
+[gd_scene load_steps=71 format=3 uid="uid://cvnayb6yojn0l"]
 
 [ext_resource type="Shader" uid="uid://dplfim0ur35s3" path="res://Code/Shaders/player_shader.gdshader" id="1_gymyn"]
 [ext_resource type="Script" uid="uid://b05fw2tonsfka" path="res://Code/Scripts/Classes/player.gd" id="1_vgqql"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://crqm72e1y3ljh" path="res://Code/Scripts/Classes/States/Player/player_falling_state.gd" id="11_gymyn"]
 [ext_resource type="Script" uid="uid://ddoawjdhkpdkh" path="res://Code/Scripts/Classes/States/Player/player_damaged_state.gd" id="12_ukyrk"]
 [ext_resource type="Script" uid="uid://djdjq0cr7jidf" path="res://Code/Scripts/Classes/States/Player/player_death_state.gd" id="13_ukyrk"]
+[ext_resource type="AudioStream" uid="uid://bdttskkvy7ns8" path="res://Assets/Audio/SFX/Flashlight-Click.mp3" id="14_7dp3o"]
+[ext_resource type="AudioStream" uid="uid://duncy6240vpo3" path="res://Assets/Audio/SFX/Hit-Pain.wav" id="15_h4iuc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gymyn"]
 shader = ExtResource("1_gymyn")
@@ -489,7 +491,6 @@ size = Vector2(7, 13)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite", "animation_player", "flashlight", "state_machine") groups=["player"]]
 collision_layer = 3
-floor_max_angle = 1.0472
 script = ExtResource("1_vgqql")
 invulnerability = 1.5
 jump_height = 30.0
@@ -579,6 +580,16 @@ allow_h_input = false
 allow_v_input = false
 animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://cegmtuuv2ux6r"
+
+[node name="FlashlightAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_7dp3o")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="DamageAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_h4iuc")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="on_damage" from="." to="PlayerStateMachine" method="_on_player_on_damage"]
 [connection signal="on_death" from="." to="PlayerStateMachine" method="_on_player_on_death"]

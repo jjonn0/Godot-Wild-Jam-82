@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://gry7567bti2x"]
+[gd_scene load_steps=12 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
 [ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
 [ext_resource type="Texture2D" uid="uid://buk8slk0ir5tm" path="res://Assets/GUI/MENUART-UNSEEN.png" id="3_qahy3"]
+[ext_resource type="Script" uid="uid://f2ugdkb2l7r1" path="res://Scenes/GUI/background_art.gd" id="4_buis1"]
 [ext_resource type="Texture2D" uid="uid://cyyeq2fc3hlab" path="res://Assets/GUI/Play-Button.png" id="4_qahy3"]
 [ext_resource type="Texture2D" uid="uid://chdflsdixb40m" path="res://Assets/GUI/SETTINGS-UNSEEN.png" id="5_5mlt8"]
 [ext_resource type="Texture2D" uid="uid://8dim1yd83j5a" path="res://Assets/GUI/Exit-UNSEEN.png" id="6_uakdt"]
+[ext_resource type="AudioStream" uid="uid://ctp27eqsfhec1" path="res://Assets/Audio/Music/Menu.mp3" id="7_wa7lv"]
+[ext_resource type="Script" uid="uid://bwvjfxnrg1yh1" path="res://audio.gd" id="8_vaj7q"]
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
@@ -42,6 +45,7 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_qahy3")
+script = ExtResource("4_buis1")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
@@ -81,5 +85,93 @@ texture_pressed = ExtResource("6_uakdt")
 texture_hover = ExtResource("6_uakdt")
 texture_focused = ExtResource("6_uakdt")
 
+[node name="AudioMenu" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_vaj7q")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/AudioMenu"]
+layout_mode = 2
+offset_left = 231.0
+offset_top = 114.0
+offset_right = 842.0
+offset_bottom = 513.0
+color = Color(0.290196, 0.290196, 0.290196, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/AudioMenu/ColorRect"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 34.0
+offset_right = 562.0
+offset_bottom = 303.0
+
+[node name="MasterLabel" type="Label" parent="CanvasLayer/AudioMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Master"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="CanvasLayer/AudioMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+ticks_on_borders = true
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer/AudioMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/AudioMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="SFXLabel" type="Label" parent="CanvasLayer/AudioMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/AudioMenu/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="SaveButton" type="Button" parent="CanvasLayer/AudioMenu"]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 455.0
+offset_right = 817.0
+offset_bottom = 486.0
+size_flags_vertical = 6
+text = "Save
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_wa7lv")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="CanvasLayer" to="." method="_on_canvas_layer_ready"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_exited" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MasterSlider" to="CanvasLayer/AudioMenu" method="_on_master_slider_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MasterSlider" to="CanvasLayer/AudioMenu" method="_on_master_slider_value_changed"]
+[connection signal="mouse_exited" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MusicSlider" to="CanvasLayer/AudioMenu" method="_on_music_slider_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MusicSlider" to="CanvasLayer/AudioMenu" method="_on_music_slider_value_changed"]
+[connection signal="mouse_exited" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/SFXSlider" to="CanvasLayer/AudioMenu" method="_on_sfx_slider_mouse_exited"]
+[connection signal="value_changed" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/SFXSlider" to="CanvasLayer/AudioMenu" method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/AudioMenu/SaveButton" to="." method="_on_save_button_pressed"]
