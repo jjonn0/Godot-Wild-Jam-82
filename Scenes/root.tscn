@@ -7,7 +7,7 @@ script = ExtResource("1_i04dx")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 starting_gui_element = "res://Scenes/GUI/title.tscn"
-starting_level = "res://Scenes/Levels/tutorial_level.tscn"
+starting_level = "res://Scenes/Levels/level_1.tscn"
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
