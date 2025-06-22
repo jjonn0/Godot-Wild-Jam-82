@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gry7567bti2x"]
+[gd_scene load_steps=18 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
 [ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
@@ -7,9 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://cyyeq2fc3hlab" path="res://Assets/GUI/Play-Button.png" id="4_qahy3"]
 [ext_resource type="Texture2D" uid="uid://chdflsdixb40m" path="res://Assets/GUI/SETTINGS-UNSEEN.png" id="5_5mlt8"]
 [ext_resource type="Texture2D" uid="uid://8dim1yd83j5a" path="res://Assets/GUI/Exit-UNSEEN.png" id="6_uakdt"]
+[ext_resource type="Texture2D" uid="uid://d3pj3vcwphbdw" path="res://Assets/GUI/Credits-USEEN(1).png" id="7_hqlw1"]
 [ext_resource type="AudioStream" uid="uid://ctp27eqsfhec1" path="res://Assets/Audio/Music/Menu.mp3" id="7_wa7lv"]
 [ext_resource type="Script" uid="uid://bwvjfxnrg1yh1" path="res://Code/Scripts/audio.gd" id="8_vaj7q"]
 [ext_resource type="Texture2D" uid="uid://bmxagjdn2d2cl" path="res://Assets/Cutscenes/scene_1.png" id="9_t05b3"]
+[ext_resource type="Texture2D" uid="uid://irbdiw8exbpw" path="res://Assets/GUI/credits.png" id="10_5pdyj"]
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
@@ -163,6 +165,13 @@ texture_pressed = ExtResource("6_uakdt")
 texture_hover = ExtResource("6_uakdt")
 texture_focused = ExtResource("6_uakdt")
 
+[node name="Cedits" type="TextureButton" parent="CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_hqlw1")
+texture_pressed = ExtResource("7_hqlw1")
+texture_hover = ExtResource("7_hqlw1")
+texture_focused = ExtResource("7_hqlw1")
+
 [node name="AudioMenu" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 process_mode = 3
@@ -236,6 +245,32 @@ size_flags_vertical = 6
 text = "Save
 "
 
+[node name="CreditsMenu" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsRect" type="TextureRect" parent="CanvasLayer/CreditsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_5pdyj")
+
+[node name="CreditsCloseButton" type="Button" parent="CanvasLayer/CreditsMenu"]
+layout_mode = 0
+offset_left = 852.0
+offset_top = 15.0
+offset_right = 1131.0
+offset_bottom = 68.0
+text = "Close"
+
 [node name="Cutscene" type="TextureRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 15
@@ -274,6 +309,7 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/Cedits" to="." method="_on_cedits_pressed"]
 [connection signal="mouse_exited" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MasterSlider" to="CanvasLayer/AudioMenu" method="_on_master_slider_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MasterSlider" to="CanvasLayer/AudioMenu" method="_on_master_slider_value_changed"]
 [connection signal="mouse_exited" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/MusicSlider" to="CanvasLayer/AudioMenu" method="_on_music_slider_mouse_exited"]
@@ -281,3 +317,4 @@ libraries = {
 [connection signal="mouse_exited" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/SFXSlider" to="CanvasLayer/AudioMenu" method="_on_sfx_slider_mouse_exited"]
 [connection signal="value_changed" from="CanvasLayer/AudioMenu/ColorRect/VBoxContainer/SFXSlider" to="CanvasLayer/AudioMenu" method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/AudioMenu/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/CreditsMenu/CreditsCloseButton" to="." method="_on_credits_close_button_pressed"]

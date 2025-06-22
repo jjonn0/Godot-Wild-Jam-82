@@ -22,7 +22,7 @@ func _on_menu_button_pressed() -> void:
 
 func _on_ready() -> void:
 	%AudioMenu.visible = false
-	
+	%CreditsMenu.visible = false
 
 func _on_save_button_pressed() -> void:
 	audio_menu.visible = false
@@ -31,3 +31,10 @@ func start_game() -> void:
 	
 	Global.game_manager.change_2d_scene("res://Scenes/Levels/tutorial_level.tscn")
 	Global.game_manager.change_gui_scene("res://Scenes/GUI/blank.tscn")
+
+
+func _on_cedits_pressed() -> void:
+	%CreditsMenu.visible = true
+
+func _on_credits_close_button_pressed() -> void:
+	%CreditsMenu.visible = false

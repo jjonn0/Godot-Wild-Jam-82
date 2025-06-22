@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw7imc8o4vkpv"]
+
+[ext_resource type="Script" uid="uid://c2dgmm4clmyq6" path="res://Code/Scripts/warning.gd" id="1_u0oue"]
+[ext_resource type="Texture2D" uid="uid://cb7bwymxrg6xm" path="res://Assets/GUI/warning.png" id="2_u0oue"]
+
+[node name="Warning" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u0oue")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="WarningRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_u0oue")
