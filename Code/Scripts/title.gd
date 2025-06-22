@@ -1,13 +1,14 @@
 extends Control
 
+@export var animation_player : AnimationPlayer
+
 @onready var audio_menu: Control = %AudioMenu
 
 
 # When the start button is pressed, load the first level and GUI.
 func _on_play_button_pressed() -> void:
 	
-	Global.game_manager.change_2d_scene("res://Scenes/Levels/level_2.tscn")
-	Global.game_manager.change_gui_scene("res://Scenes/GUI/hud.tscn")
+	animation_player.play("transition")
 
 # When the exit button is pressed, quit the game.
 func _on_exit_button_pressed() -> void:
@@ -25,3 +26,8 @@ func _on_ready() -> void:
 
 func _on_save_button_pressed() -> void:
 	audio_menu.visible = false
+
+func start_game() -> void:
+	
+	Global.game_manager.change_2d_scene("res://Scenes/Levels/level_2.tscn")
+	Global.game_manager.change_gui_scene("res://Scenes/GUI/blank.tscn")

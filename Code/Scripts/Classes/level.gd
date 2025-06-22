@@ -7,6 +7,7 @@ class_name Level extends Node
 @export var camera_top_cutoff : int = -1000000
 @export var camera_right_cutoff : int = 1000000
 @export var camera_bottom_cutoff : int = 1000000
+@export var animation_player : AnimationPlayer
 
 var current_spawn : Marker2D
 var lights : Dictionary
@@ -21,6 +22,7 @@ func _ready() -> void:
 	spawn_player()
 	set_camera()
 	prepare_level_unload()
+	play_movie()
 	
 	# Find all PointLight2Ds and record their default alpha value.
 	var light_nodes = search_for_nodes(get_children(), [], "hauntable_light")
@@ -69,7 +71,6 @@ func prepare_level_unload() -> void:
 
 func level_unload(next_level : String) -> void:
 	
-	Global.game_manager.change_gui_scene("res://Scenes/GUI/hud.tscn")
 	Global.game_manager.change_2d_scene(next_level)
 
 func on_player_respawn(player : CharacterBody2D) -> void:
@@ -146,3 +147,17 @@ func set_camera() -> void:
 	camera.set_limit(SIDE_RIGHT, camera_right_cutoff)
 	camera.set_limit(SIDE_TOP, camera_top_cutoff)
 	camera.set_limit(SIDE_LEFT, camera_left_cutoff)
+
+func play_movie() -> void:
+	
+	animation_player.play("movie")
+
+func enable_player() -> void:
+	
+	Global.game_manager.change_gui_scene("res://Scenes/GUI/hud.tscn")
+	
+	for node in get_children():
+		
+		if node.is_in_group("player"):
+			
+			node.disabled = false

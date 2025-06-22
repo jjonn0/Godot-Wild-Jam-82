@@ -8,9 +8,9 @@ void vertex() {
 
 void fragment() {
 
-	//COLOR = vec4(texture(TEXTURE, UV).rgba);
+	//float average_color = (COLOR.r + COLOR.g + COLOR.b) / 3.0;
 	//
-	//COLOR.a -= 0.5;
+	//COLOR = vec4(average_color, average_color, average_color, 1.0);
 
 }
 
@@ -37,12 +37,12 @@ void light() {
 	//LIGHT = vec4(light_mask * LIGHT_COLOR.a, transparency_value);
 	
 	if (LIGHT_COLOR.a <= 0.0) {
-		transparency_value = 0.5;
+		transparency_value = 0.0;
 	}
 	else {
-		transparency_value = 1.0;
+		transparency_value = COLOR.a;
 	}
 
-	LIGHT = vec4(COLOR.rgb * LIGHT_ENERGY, transparency_value * LIGHT_COLOR.a);
+	LIGHT = vec4(COLOR.rgb, transparency_value * LIGHT_COLOR.a);
 
 }

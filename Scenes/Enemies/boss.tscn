@@ -1,8 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://crdty23ng6ltk"]
+[gd_scene load_steps=16 format=3 uid="uid://crdty23ng6ltk"]
 
 [ext_resource type="Texture2D" uid="uid://dyqnxq1af51bl" path="res://Assets/Enemies/big-blob-enemy.png" id="1_0bnu1"]
 [ext_resource type="Script" uid="uid://2qso5f5iyic0" path="res://Code/Scripts/boss.gd" id="2_5afma"]
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="2_6xxrv"]
+[ext_resource type="Shader" uid="uid://cayckrwugadb7" path="res://Code/Shaders/boss_light_shader.gdshader" id="2_fdynt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lufdo"]
+shader = ExtResource("2_fdynt")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6xxrv"]
 atlas = ExtResource("1_0bnu1")
@@ -72,11 +76,14 @@ animations = [{
 normal = Vector2(1, 0)
 distance = 16.5
 
-[node name="Boss" type="AnimatedSprite2D"]
+[node name="Boss" type="Node2D"]
+script = ExtResource("2_5afma")
+
+[node name="BossSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_lufdo")
 sprite_frames = SubResource("SpriteFrames_kles1")
 autoplay = "default"
 frame_progress = 0.901276
-script = ExtResource("2_5afma")
 
 [node name="Killzone" parent="." instance=ExtResource("2_6xxrv")]
 damage_points = 99

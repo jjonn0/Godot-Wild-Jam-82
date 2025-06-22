@@ -9,11 +9,11 @@ void vertex() {
 }
 
 void fragment() {
-	
+
 	vec4 texture_colour = texture(TEXTURE, UV);
 	texture_colour.rgb = mix(texture_colour.rgb, flash_colour.rgb, flash_value);
 	COLOR = texture_colour;
-	
+
 }
 
 //void light() {

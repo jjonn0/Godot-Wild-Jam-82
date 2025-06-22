@@ -35,7 +35,7 @@ void light() {
 	//}
 //
 	//LIGHT = vec4(light_mask * LIGHT_COLOR.a, transparency_value);
-	
+
 	if (LIGHT_COLOR.a <= 0.0) {
 		transparency_value = 0.0;
 	}

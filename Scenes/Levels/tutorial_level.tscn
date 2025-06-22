@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://cypqkyk734gug"]
+[gd_scene load_steps=39 format=4 uid="uid://cypqkyk734gug"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_tm4ns"]
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_1pi2y"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c32r22ucltpfa" path="res://Scenes/player_exit.tscn" id="17_w685s"]
 [ext_resource type="AudioStream" uid="uid://ekpjcrpv4qif" path="res://Assets/Audio/Music/Hospital Level.mp3" id="18_g3l5c"]
 [ext_resource type="PackedScene" uid="uid://dvh6yyb764cuk" path="res://Scenes/battery.tscn" id="19_hp0rl"]
+[ext_resource type="Texture2D" uid="uid://bmxagjdn2d2cl" path="res://Assets/Cutscenes/scene_1.png" id="20_ck3nf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w685s"]
 normal = Vector2(6.33992e-06, -1)
@@ -93,12 +94,81 @@ point_count = 3
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c2yeb"]
 normal = Vector2(-6.28303e-06, 1)
 
-[node name="TutorialLevel" type="Node"]
+[sub_resource type="Animation" id="Animation_w35ah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ck3nf"]
+resource_name = "movie"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_player"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w35ah"]
+_data = {
+&"RESET": SubResource("Animation_w35ah"),
+&"movie": SubResource("Animation_ck3nf")
+}
+
+[node name="TutorialLevel" type="Node" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("1_tm4ns")
 camera_left_cutoff = 0
 camera_top_cutoff = -160
 camera_right_cutoff = 2160
 camera_bottom_cutoff = 0
+animation_player = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://dfbt6vwhsigl1"
 
 [node name="LeftBoundary" type="StaticBody2D" parent="."]
@@ -111,7 +181,7 @@ shape = SubResource("WorldBoundaryShape2D_w685s")
 [node name="WallTileMapLayer" type="TileMapLayer" parent="."]
 material = SubResource("ShaderMaterial_4kucd")
 position = Vector2(0, 32)
-tile_map_data = PackedByteArray("AAAAAP7/AQAAAAAAAAABAP7/AQABAAAAAAADAP7/AAACAAAAAAAEAP7/AAADAAAAAAAFAP7/AAADAAAAAAAGAP7/AAADAAAAAAAHAP7/AAAEAAAAAAAIAP7/AAADAAAAAAAJAP7/AAADAAAAAAAKAP7/AAADAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAFAAAAAAANAP7/AAAAAAAAAAAOAP7/AAACAAAAAAAPAP7/AAADAAAAAAAQAP7/AAADAAAAAAARAP7/AAAEAAAAAAASAP7/AAABAAAAAAATAP7/AAADAAAAAAAUAP7/AAAEAAAAAAAVAP7/AAACAAAAAAAWAP7/AAAFAAAAAAAXAP7/AAAAAAAAAAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAADAAAAAAAbAP7/AAADAAAAAAAcAP7/AAADAAAAAAAdAP7/AAADAAAAAAAeAP7/AAADAAAAAAAfAP7/AAADAAAAAAAgAP7/AAADAAAAAAAhAP7/AAAEAAAAAAAiAP7/AAACAAAAAAAjAP7/AAAAAAAAAAAkAP7/AAADAAAAAAAlAP7/AAAAAAAAAAAmAP7/AAAEAAAAAAAnAP7/AAAAAAAAAAAoAP7/AAAFAAAAAAApAP7/AAADAAAAAAAqAP7/AAADAAAAAAArAP7/AAACAAAAAAAsAP7/AAABAAAAAAAtAP7/AAAAAAAAAAAuAP7/AAADAAAAAAAvAP7/AAADAAAAAAAwAP7/AAAEAAAAAAAxAP7/AAADAAAAAAAyAP7/AAADAAAAAAAzAP7/AAAAAAAAAAA0AP7/AAAIAAAAAAA1AP7/AAAFAAAAAAA2AP7/AAACAAAAAAA3AP7/AAAAAAAAAAA4AP7/AAAHAAAAAAA5AP7/AAAEAAAAAAA6AP7/AAADAAAAAAA7AP7/AAADAAAAAAA8AP7/AAAFAAAAAAA9AP7/AAADAAAAAAA+AP7/AAADAAAAAAA/AP7/AAADAAAAAABAAP7/AAADAAAAAABBAP7/AAAEAAAAAABCAP7/AAADAAAAAAACAP7/AAABAAAAAAAAAP//AQAAAAAAAAAAAP3/AQAAAAAAAABDAP7/AQAAAAAAABBDAP3/AQAAAAAAABBDAP//AQAAAAAAABA=")
+tile_map_data = PackedByteArray("AAAAAP7/AQAAAAAAAAABAP7/AQABAAAAAAADAP7/AAACAAAAAAAEAP7/AAADAAAAAAAFAP7/AAADAAAAAAAGAP7/AAADAAAAAAAHAP7/AAAEAAAAAAAIAP7/AAADAAAAAAAJAP7/AAADAAAAAAAKAP7/AAADAAAAAAALAP7/AAAAAAAAAAAMAP7/AAAFAAAAAAANAP7/AAAAAAAAAAAOAP7/AAACAAAAAAAPAP7/AAADAAAAAAAQAP7/AAADAAAAAAARAP7/AAAEAAAAAAASAP7/AAABAAAAAAATAP7/AAADAAAAAAAUAP7/AAAEAAAAAAAVAP7/AAACAAAAAAAWAP7/AAAFAAAAAAAXAP7/AAAAAAAAAAAYAP7/AAADAAAAAAAZAP7/AAAEAAAAAAAaAP7/AAADAAAAAAAbAP7/AAADAAAAAAAcAP7/AAADAAAAAAAdAP7/AAADAAAAAAAeAP7/AAADAAAAAAAfAP7/AAADAAAAAAAgAP7/AAADAAAAAAAhAP7/AAAEAAAAAAAiAP7/AAACAAAAAAAjAP7/AAAAAAAAAAAkAP7/AAADAAAAAAAlAP7/AAAAAAAAAAAmAP7/AAAEAAAAAAAnAP7/AAAAAAAAAAAoAP7/AAAFAAAAAAApAP7/AAADAAAAAAAqAP7/AAADAAAAAAArAP7/AAACAAAAAAAsAP7/AAABAAAAAAAtAP7/AAAAAAAAAAAuAP7/AAADAAAAAAAvAP7/AAADAAAAAAAwAP7/AAAEAAAAAAAxAP7/AAADAAAAAAAyAP7/AAADAAAAAAAzAP7/AAAAAAAAAAA0AP7/AAAIAAAAAAA1AP7/AAAFAAAAAAA2AP7/AAACAAAAAAA3AP7/AAAAAAAAAAA4AP7/AAAHAAAAAAA5AP7/AAAEAAAAAAA6AP7/AAADAAAAAAA7AP7/AAADAAAAAAA8AP7/AAAFAAAAAAA9AP7/AAADAAAAAAA+AP7/AAADAAAAAAA/AP7/AAADAAAAAABAAP7/AAADAAAAAABBAP7/AAAEAAAAAABCAP7/AAADAAAAAAACAP7/AAAGAAAAAAAAAP//AQAAAAAAAAAAAP3/AQAAAAAAAABDAP7/AQAAAAAAABBDAP3/AQAAAAAAABBDAP//AQAAAAAAABA=")
 tile_set = SubResource("TileSet_ot486")
 
 [node name="FloorTileMapLayer" type="TileMapLayer" parent="."]
@@ -269,7 +339,26 @@ shape = SubResource("WorldBoundaryShape2D_c2yeb")
 process_mode = 3
 stream = ExtResource("18_g3l5c")
 volume_db = -20.0
-autoplay = true
 
 [node name="Battery" parent="." instance=ExtResource("19_hp0rl")]
 position = Vector2(1610, -47)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = 100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("20_ck3nf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w35ah")
+}

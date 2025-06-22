@@ -15,3 +15,5 @@ func _process(delta: float) -> void:
 		var train = train_scene.instantiate()
 		
 		add_child(train)
+	
+	current_time -= delta

@@ -33,6 +33,7 @@ var dead : bool = false
 var current_invulnerability : float = 0.0
 var flashlight_state : bool = false
 var current_flashlight_time : float
+var disabled : bool = true
 
 # Velocity applied to the player when they jump.
 @onready var jump_velocity : float = ((2.0 * jump_height) / time_to_peak) * -1.0
@@ -63,26 +64,28 @@ func _process(delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	
-	# Handle left-right inputs
-	direction_input = Input.get_axis("move_left", "move_right")
-	if direction_input && allow_h_input:
-		velocity.x = direction_input * speed
-	else:
-		velocity.x = 0
+	if !disabled:
 	
-	# Flipping the character based on x velocity
-	if velocity.x < 0:
-		scale = Vector2(1, -1)
-		rotation = deg_to_rad(180)
-	elif velocity.x > 0:
-		scale = Vector2(1, 1)
-		rotation = deg_to_rad(0)
-	
-	# Handle flashlight
-	if Input.is_action_just_pressed("flashlight_toggle") and !dead:
-		toggle_light()
-	
-	move_and_slide()
+		# Handle left-right inputs
+		direction_input = Input.get_axis("move_left", "move_right")
+		if direction_input && allow_h_input:
+			velocity.x = direction_input * speed
+		else:
+			velocity.x = 0
+		
+		# Flipping the character based on x velocity
+		if velocity.x < 0:
+			scale = Vector2(1, -1)
+			rotation = deg_to_rad(180)
+		elif velocity.x > 0:
+			scale = Vector2(1, 1)
+			rotation = deg_to_rad(0)
+		
+		# Handle flashlight
+		if Input.is_action_just_pressed("flashlight_toggle") and !dead:
+			toggle_light()
+		
+		move_and_slide()
 
 # Handle player damage.
 func take_damage(damage_points : int) -> void:

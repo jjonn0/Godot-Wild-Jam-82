@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gry7567bti2x"]
+[gd_scene load_steps=16 format=3 uid="uid://gry7567bti2x"]
 
 [ext_resource type="Script" uid="uid://dw1wf12nrcaro" path="res://Code/Scripts/title.gd" id="1_5mlt8"]
 [ext_resource type="Script" uid="uid://bu7kxkea1a8am" path="res://Code/Scripts/cursor_light.gd" id="3_flbej"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://8dim1yd83j5a" path="res://Assets/GUI/Exit-UNSEEN.png" id="6_uakdt"]
 [ext_resource type="AudioStream" uid="uid://ctp27eqsfhec1" path="res://Assets/Audio/Music/Menu.mp3" id="7_wa7lv"]
 [ext_resource type="Script" uid="uid://bwvjfxnrg1yh1" path="res://Code/Scripts/audio.gd" id="8_vaj7q"]
+[ext_resource type="Texture2D" uid="uid://bmxagjdn2d2cl" path="res://Assets/Cutscenes/scene_1.png" id="9_t05b3"]
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
@@ -21,7 +22,82 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.794872, 0.84188)
 
-[node name="Title" type="Control"]
+[sub_resource type="Animation" id="Animation_t05b3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Transition:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Cutscene:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vaj7q"]
+resource_name = "transition"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Transition:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.145098, 0.137255, 0.219608, 0), Color(0.145098, 0.137255, 0.219608, 1), Color(0.145098, 0.137255, 0.219608, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_game"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Cutscene:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqlw1"]
+_data = {
+&"RESET": SubResource("Animation_t05b3"),
+&"transition": SubResource("Animation_vaj7q")
+}
+
+[node name="Title" type="Control" node_paths=PackedStringArray("animation_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,9 +105,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5mlt8")
+animation_player = NodePath("AnimationPlayer")
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="CursorLight" type="PointLight2D" parent="CanvasLayer"]
 scale = Vector2(3, 3)
@@ -158,11 +236,38 @@ size_flags_vertical = 6
 text = "Save
 "
 
+[node name="Cutscene" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_t05b3")
+
+[node name="Transition" type="ColorRect" parent="CanvasLayer"]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_wa7lv")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hqlw1")
+}
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="ready" from="CanvasLayer" to="." method="_on_canvas_layer_ready"]

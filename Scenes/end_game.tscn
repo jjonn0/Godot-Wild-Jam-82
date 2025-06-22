@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b88a4j0j8f36o"]
+
+[ext_resource type="Script" uid="uid://cqbau3h2e3x4l" path="res://Code/Scripts/end_game.gd" id="1_sjse8"]
+
+[node name="EndGame" type="Area2D"]
+script = ExtResource("1_sjse8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
