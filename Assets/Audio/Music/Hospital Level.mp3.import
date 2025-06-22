@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Hospital Level.mp3-47f4892e9e76c26607a83a149b
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

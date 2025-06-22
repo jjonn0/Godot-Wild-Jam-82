@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://chdflsdixb40m" path="res://Assets/GUI/SETTINGS-UNSEEN.png" id="5_5mlt8"]
 [ext_resource type="Texture2D" uid="uid://8dim1yd83j5a" path="res://Assets/GUI/Exit-UNSEEN.png" id="6_uakdt"]
 [ext_resource type="AudioStream" uid="uid://ctp27eqsfhec1" path="res://Assets/Audio/Music/Menu.mp3" id="7_wa7lv"]
-[ext_resource type="Script" uid="uid://bwvjfxnrg1yh1" path="res://audio.gd" id="8_vaj7q"]
+[ext_resource type="Script" uid="uid://bwvjfxnrg1yh1" path="res://Code/Scripts/audio.gd" id="8_vaj7q"]
 
 [sub_resource type="Gradient" id="Gradient_gd3qs"]
 interpolation_mode = 1
@@ -87,6 +87,7 @@ texture_focused = ExtResource("6_uakdt")
 
 [node name="AudioMenu" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

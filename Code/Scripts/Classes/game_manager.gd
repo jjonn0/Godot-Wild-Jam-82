@@ -50,3 +50,4 @@ func change_2d_scene(new_scene : String, delete : bool = true, keep_running : bo
 	world_2d.call_deferred("add_child", new)
 	current_2d_scene = new
 	on_2d_scene_change.emit()
+	

@@ -247,6 +247,8 @@ rotation = 1.57079
 shape = SubResource("WorldBoundaryShape2D_c2yeb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("18_g3l5c")
 volume_db = -20.0
 autoplay = true
+bus = &"Music"

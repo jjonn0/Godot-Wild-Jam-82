@@ -576,10 +576,12 @@ metadata/_custom_type_script = "uid://cegmtuuv2ux6r"
 [node name="FlashlightAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_7dp3o")
 volume_db = -20.0
+bus = &"SFX"
 
 [node name="DamageAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_h4iuc")
 volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="on_damage" from="." to="PlayerStateMachine" method="_on_player_on_damage"]
 [connection signal="on_death" from="." to="PlayerStateMachine" method="_on_player_on_death"]

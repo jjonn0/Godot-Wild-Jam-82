@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://dc4tshs7ppuxb"]
+[gd_scene load_steps=47 format=4 uid="uid://dc4tshs7ppuxb"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_jv26f"]
 [ext_resource type="TileSet" uid="uid://drwi7stra30tm" path="res://Assets/Forest/forest_tileset.tres" id="2_iixi8"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://4is3hjp3aydl" path="res://Scenes/Enemies/tall_enemy.tscn" id="12_afv7b"]
 [ext_resource type="Texture2D" uid="uid://bhqm6xqxso7p7" path="res://Assets/Forest/bridge.png" id="12_fayjm"]
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="18_31phq"]
+[ext_resource type="AudioStream" uid="uid://dppha0xxyaycu" path="res://Assets/Audio/Music/Forest Level.mp3" id="19_7hll7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7hll7"]
 shader = ExtResource("7_7r2dd")
@@ -592,3 +593,10 @@ amount = 1000
 lifetime = 30.0
 preprocess = 10.0
 process_material = SubResource("ParticleProcessMaterial_31phq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("19_7hll7")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"

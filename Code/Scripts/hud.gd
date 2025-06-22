@@ -8,6 +8,12 @@ extends CanvasLayer
 var player : Player
 var lives : Array[Life]
 
+@onready var playerMenu = %PlayerMenu
+@onready var MASTER_BUS_ID = AudioServer.get_bus_index("Master")
+@onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
+@onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
+
+
 func _process(delta: float) -> void:
 	
 	if player == null:
@@ -90,3 +96,29 @@ class Life extends AnimatedSprite2D:
 	func set_state(state : int) -> void:
 		
 		self.set_frame(state)
+		
+func _ready() -> void:
+	$PlayerMenu/ColorRect/VBoxContainer/MasterSlider	.value = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))
+	$PlayerMenu/ColorRect/VBoxContainer/MusicSlider.value = db_to_linear(AudioServer.get_bus_volume_db(MUSIC_BUS_ID))
+	$PlayerMenu/ColorRect/VBoxContainer/SFXSlider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))
+
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		playerMenu.visible = !playerMenu.visible
+
+		
+func _on_save_button_pressed() -> void:
+	playerMenu.visible = !playerMenu.visible
+
+
+func _on_master_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(MASTER_BUS_ID, linear_to_db(value))
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(MUSIC_BUS_ID, linear_to_db(value))
+
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(SFX_BUS_ID, linear_to_db(value))

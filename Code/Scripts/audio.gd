@@ -6,9 +6,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ColorRect/VBoxContainer/MasterSlider.value = db_to_linear(AudioServer.get_bus_volume_db(0))
-	$ColorRect/VBoxContainer/MusicSlider.value = db_to_linear(AudioServer.get_bus_volume_db(1))
-	$ColorRect/VBoxContainer/SFXSlider.value = db_to_linear(AudioServer.get_bus_volume_db(2))
+	$ColorRect/VBoxContainer/MasterSlider.value = db_to_linear(AudioServer.get_bus_volume_db(MASTER_BUS_ID))
+	$ColorRect/VBoxContainer/MusicSlider.value = db_to_linear(AudioServer.get_bus_volume_db(MUSIC_BUS_ID))
+	$ColorRect/VBoxContainer/SFXSlider.value = db_to_linear(AudioServer.get_bus_volume_db(SFX_BUS_ID))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
