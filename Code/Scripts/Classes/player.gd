@@ -130,3 +130,8 @@ func toggle_light() -> void:
 		flashlight_state = true
 	
 	flashlight.visible = flashlight_state
+
+func recharge_flashlight() -> void:
+	
+	current_flashlight_time = flashlight_duration
+	update_charge.emit(current_flashlight_time)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7r2jc82qyaq1" path="res://Code/Scripts/Classes/basic_enemy.gd" id="1_fm08i"]
 [ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="2_b4gsy"]
-[ext_resource type="Texture2D" uid="uid://b5c7s814d6wf0" path="res://Assets/enemy_sprites.png" id="2_byglg"]
+[ext_resource type="Texture2D" uid="uid://b5c7s814d6wf0" path="res://Assets/Enemies/enemy_sprites.png" id="2_byglg"]
 [ext_resource type="PackedScene" uid="uid://bdsp6rf7wdh4h" path="res://Scenes/killzone.tscn" id="3_b4gsy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4wxjq"]
