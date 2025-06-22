@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5cumcapsyeul"]
+
+[ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_7qxk6"]
+
+[node name="Level2" type="Node"]
+script = ExtResource("1_7qxk6")
+camera_left_cutoff = 0
+camera_bottom_cutoff = 0
+metadata/_custom_type_script = "uid://dfbt6vwhsigl1"

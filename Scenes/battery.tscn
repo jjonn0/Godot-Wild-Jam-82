@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvh6yyb764cuk"]
+
+[ext_resource type="Script" uid="uid://c474egay8kbvw" path="res://Code/Scripts/battery.gd" id="1_23u8t"]
+[ext_resource type="Texture2D" uid="uid://1hmf6h2y8xsc" path="res://Assets/GUI/battery_full.png" id="1_mjabg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mxnnr"]
+size = Vector2(15, 34)
+
+[sub_resource type="Gradient" id="Gradient_23u8t"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.662468, 0.760705, 0.831234, 0.881612, 0.906801, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.764706, 1, 1, 1, 0.556863, 1, 1, 1, 0.34902, 1, 1, 1, 0.168627, 1, 1, 1, 0.0666667, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l2pcn"]
+gradient = SubResource("Gradient_23u8t")
+width = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.119658, 0.183761)
+
+[node name="Battery" type="Area2D"]
+scale = Vector2(0.4, 0.4)
+script = ExtResource("1_23u8t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mxnnr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+texture = ExtResource("1_mjabg")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.588235, 0.588235, 0.588235, 1)
+energy = 1.2
+blend_mode = 2
+texture = SubResource("GradientTexture2D_l2pcn")
+texture_scale = 1.22
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

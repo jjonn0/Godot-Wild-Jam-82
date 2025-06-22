@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cypqkyk734gug"]
+[gd_scene load_steps=35 format=4 uid="uid://cypqkyk734gug"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_tm4ns"]
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_1pi2y"]
@@ -18,6 +18,7 @@
 [ext_resource type="Material" uid="uid://03kjfvir0olp" path="res://Assets/dust_particle_material.tres" id="16_5pgco"]
 [ext_resource type="PackedScene" uid="uid://c32r22ucltpfa" path="res://Scenes/player_exit.tscn" id="17_w685s"]
 [ext_resource type="AudioStream" uid="uid://ekpjcrpv4qif" path="res://Assets/Audio/Music/Hospital Level.mp3" id="18_g3l5c"]
+[ext_resource type="PackedScene" uid="uid://dvh6yyb764cuk" path="res://Scenes/battery.tscn" id="19_hp0rl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w685s"]
 normal = Vector2(6.33992e-06, -1)
@@ -57,6 +58,9 @@ shader = ExtResource("2_1pi2y")
 shader = ExtResource("7_68caq")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8yvus"]
+shader = ExtResource("9_4kucd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hp0rl"]
 shader = ExtResource("9_4kucd")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ot486"]
@@ -174,6 +178,20 @@ text = "W OR SPACE
 TO JUMP"
 horizontal_alignment = 1
 
+[node name="BatteryLabel" type="Label" parent="."]
+material = SubResource("ShaderMaterial_hp0rl")
+offset_left = 1555.0
+offset_top = -62.0
+offset_right = 2384.0
+offset_bottom = 70.0
+scale = Vector2(0.145, 0.145)
+theme = ExtResource("7_1pi2y")
+theme_override_font_sizes/font_size = 60
+text = "COLLECTING BATTERIES
+WILL RECHARGE YOUR
+FLASHLIGHT"
+horizontal_alignment = 1
+
 [node name="Killzone" parent="." instance=ExtResource("10_c2yeb")]
 damage_points = 99
 
@@ -226,6 +244,7 @@ position = Vector2(1256, -32)
 path = NodePath("..")
 
 [node name="Path2D" type="Path2D" parent="."]
+position = Vector2(56, 0)
 curve = SubResource("Curve2D_5pgco")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
@@ -251,4 +270,6 @@ process_mode = 3
 stream = ExtResource("18_g3l5c")
 volume_db = -20.0
 autoplay = true
-bus = &"Music"
+
+[node name="Battery" parent="." instance=ExtResource("19_hp0rl")]
+position = Vector2(1610, -47)
