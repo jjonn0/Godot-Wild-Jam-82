@@ -29,5 +29,5 @@ func _on_save_button_pressed() -> void:
 
 func start_game() -> void:
 	
-	Global.game_manager.change_2d_scene("res://Scenes/Levels/level_2.tscn")
+	Global.game_manager.change_2d_scene("res://Scenes/Levels/tutorial_level.tscn")
 	Global.game_manager.change_gui_scene("res://Scenes/GUI/blank.tscn")

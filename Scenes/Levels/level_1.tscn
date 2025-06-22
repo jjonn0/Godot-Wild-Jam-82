@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://dc4tshs7ppuxb"]
+[gd_scene load_steps=70 format=4 uid="uid://dc4tshs7ppuxb"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_jv26f"]
 [ext_resource type="TileSet" uid="uid://drwi7stra30tm" path="res://Assets/Forest/forest_tileset.tres" id="2_iixi8"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cjlg4hq0fbad2" path="res://Assets/Forest/forestlamp_sized-down.png" id="25_t8afp"]
 [ext_resource type="Shader" uid="uid://45wubyrra4hx" path="res://Code/Shaders/enemy_light_shader.gdshader" id="26_i7ma5"]
 [ext_resource type="Texture2D" uid="uid://deqx7qhurabpc" path="res://Assets/Enemies/big-blob-enemy_stationary.png" id="26_vif5h"]
+[ext_resource type="AudioStream" uid="uid://dppha0xxyaycu" path="res://Assets/Audio/Music/Forest Level.mp3" id="29_1fgkh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7hll7"]
 shader = ExtResource("7_7r2dd")
@@ -776,3 +777,10 @@ sprite_frames = SubResource("SpriteFrames_st1ra")
 autoplay = "default"
 frame_progress = 0.474082
 flip_h = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("29_1fgkh")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
