@@ -294,7 +294,7 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_afv7b"]
 _data = {
-"points": PackedVector2Array(78.9743, 19.8172, -78.9743, -19.8172, 1918, -63, 18.1003, -6.1152, -18.1003, 6.1152, 1769, -62, -22.1226, 1.07915, 22.1226, -1.07915, 1849, 35, 4.85619, 16.9067, -4.85619, -16.9067, 1918, -63)
+"points": PackedVector2Array(66.5694, 20.0348, -66.5694, -20.0348, 1918, -57, 14.4006, -4.37417, -14.4006, 4.37417, 1772, -57, -22.1226, 1.07915, 22.1226, -1.07915, 1849, 35, 4.85619, 16.9067, -4.85619, -16.9067, 1918, -57)
 }
 point_count = 4
 
@@ -631,14 +631,14 @@ path = NodePath("..")
 curve = SubResource("Curve2D_afv7b")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
-position = Vector2(1918, -63)
+position = Vector2(1918, -57)
 rotates = false
 
 [node name="FloatingEnemy" parent="Path2D4/PathFollow2D" node_paths=PackedStringArray("path") instance=ExtResource("10_u5ghp")]
 path = NodePath("..")
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D4"]
-position = Vector2(1770.38, -44.8337)
+position = Vector2(1776.87, -37.0435)
 progress = 170.0
 rotates = false
 

@@ -78,6 +78,12 @@ func on_player_respawn(player : CharacterBody2D) -> void:
 	if current_spawn != null:
 		player.position = current_spawn.position
 		player.reset()
+	
+	for child in get_children():
+		
+		if child.is_in_group("battery"):
+			
+			child.respawn()
 
 # Uses recursion to search through all lower nodes.
 # If the current node is not the player spawn, search through its children.

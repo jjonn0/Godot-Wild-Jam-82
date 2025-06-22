@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cypqkyk734gug"]
+[gd_scene load_steps=40 format=4 uid="uid://cypqkyk734gug"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_tm4ns"]
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_1pi2y"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://ekpjcrpv4qif" path="res://Assets/Audio/Music/Hospital Level.mp3" id="18_g3l5c"]
 [ext_resource type="PackedScene" uid="uid://dvh6yyb764cuk" path="res://Scenes/battery.tscn" id="19_hp0rl"]
 [ext_resource type="Texture2D" uid="uid://bmxagjdn2d2cl" path="res://Assets/Cutscenes/scene_1.png" id="20_ck3nf"]
+[ext_resource type="PackedScene" uid="uid://cnbvwruvtht3q" path="res://wires.tscn" id="21_w35ah"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w685s"]
 normal = Vector2(6.33992e-06, -1)
@@ -367,3 +368,15 @@ libraries = {
 
 [node name="Lamp9" parent="." instance=ExtResource("9_c2yeb")]
 position = Vector2(1609, -119)
+
+[node name="Wires" parent="." instance=ExtResource("21_w35ah")]
+position = Vector2(467, -104)
+
+[node name="Wires2" parent="." instance=ExtResource("21_w35ah")]
+position = Vector2(900, -104)
+
+[node name="Wires3" parent="." instance=ExtResource("21_w35ah")]
+position = Vector2(1556, -104)
+
+[node name="Wires4" parent="." instance=ExtResource("21_w35ah")]
+position = Vector2(1760, -104)

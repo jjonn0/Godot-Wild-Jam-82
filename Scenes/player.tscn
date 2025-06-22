@@ -492,6 +492,7 @@ size = Vector2(7, 13)
 collision_layer = 3
 script = ExtResource("1_vgqql")
 invulnerability = 1.5
+flashlight_duration = 30.0
 jump_height = 30.0
 animated_sprite = NodePath("AnimatedPlayerSprite")
 animation_player = NodePath("AnimationPlayer")

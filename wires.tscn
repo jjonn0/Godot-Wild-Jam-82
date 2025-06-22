@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnbvwruvtht3q"]
+
+[ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="1_nexaw"]
+[ext_resource type="Texture2D" uid="uid://ctyllt21v0rgd" path="res://Assets/Hospital/wires.png" id="1_ptv7e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ayvk"]
+shader = ExtResource("1_nexaw")
+
+[node name="Wires" type="Sprite2D"]
+material = SubResource("ShaderMaterial_8ayvk")
+texture = ExtResource("1_ptv7e")

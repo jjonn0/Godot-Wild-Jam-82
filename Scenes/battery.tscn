@@ -18,7 +18,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.119658, 0.183761)
 
-[node name="Battery" type="Area2D"]
+[node name="Battery" type="Area2D" groups=["battery"]]
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_23u8t")
 

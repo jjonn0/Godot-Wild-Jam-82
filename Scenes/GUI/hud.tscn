@@ -32,6 +32,7 @@ texture_under = ExtResource("2_65piv")
 texture_progress = ExtResource("2_ok2ij")
 
 [node name="FPS" type="Label" parent="Hud"]
+visible = false
 layout_mode = 0
 offset_left = 1060.0
 offset_top = 111.0
