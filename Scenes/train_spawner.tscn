@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://8x445a6f2nx7"]
+
+[ext_resource type="Texture2D" uid="uid://dvl7e3isi1mj8" path="res://Assets/test_background.png" id="1_afhim"]
+[ext_resource type="Script" uid="uid://cjroyay8my4x8" path="res://Code/Scripts/train_spawner.gd" id="1_sirqb"]
+
+[node name="TrainSpawner" type="Node2D"]
+z_index = 10
+script = ExtResource("1_sirqb")
+train_path = "res://Scenes/train.tscn"
+
+[node name="TestBackground" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(22, -114)
+texture = ExtResource("1_afhim")

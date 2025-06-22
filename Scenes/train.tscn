@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://trkrvm78lv3"]
+
+[ext_resource type="Script" uid="uid://c4cmkd7hwxyj3" path="res://Code/Scripts/train.gd" id="1_nxpru"]
+[ext_resource type="Texture2D" uid="uid://nv7h1mp3x2o6" path="res://Assets/Subway/train-sprite.png" id="2_0hk28"]
+
+[sub_resource type="Gradient" id="Gradient_sirqb"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.967254)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_icrr1"]
+gradient = SubResource("Gradient_sirqb")
+width = 40
+fill = 1
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 0.5)
+
+[node name="Train" type="Node2D"]
+script = ExtResource("1_nxpru")
+
+[node name="TrainSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_0hk28")
+
+[node name="FrontLight" type="PointLight2D" parent="."]
+position = Vector2(-313, 3)
+rotation = -1.5708
+scale = Vector2(1, 4)
+color = Color(0.588235, 0.588235, 0.588235, 1)
+energy = 1.2
+blend_mode = 2
+texture = SubResource("GradientTexture2D_icrr1")
+
+[node name="BackLight" type="PointLight2D" parent="."]
+position = Vector2(313, 4)
+rotation = -4.71238
+scale = Vector2(1, 4)
+color = Color(0.588235, 0.588235, 0.588235, 1)
+energy = 1.2
+blend_mode = 2
+texture = SubResource("GradientTexture2D_icrr1")

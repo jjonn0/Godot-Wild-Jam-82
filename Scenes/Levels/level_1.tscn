@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://dc4tshs7ppuxb"]
+[gd_scene load_steps=54 format=4 uid="uid://dc4tshs7ppuxb"]
 
 [ext_resource type="Script" uid="uid://dfbt6vwhsigl1" path="res://Code/Scripts/Classes/level.gd" id="1_jv26f"]
 [ext_resource type="TileSet" uid="uid://drwi7stra30tm" path="res://Assets/Forest/forest_tileset.tres" id="2_iixi8"]
@@ -22,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://ce7ol7kh6c7sy" path="res://Assets/Forest/hospital-wall.png" id="20_fayjm"]
 [ext_resource type="Texture2D" uid="uid://btmw1hoia1i6n" path="res://Assets/Forest/subway-stairs.png" id="21_nojx8"]
 [ext_resource type="PackedScene" uid="uid://c32r22ucltpfa" path="res://Scenes/player_exit.tscn" id="22_vvknj"]
+[ext_resource type="PackedScene" uid="uid://dtll8wygdbvrd" path="res://campfire.tscn" id="23_ad63i"]
+[ext_resource type="Texture2D" uid="uid://c1usy6t66i282" path="res://Assets/Forest/LOG.png" id="24_pmbdk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7hll7"]
 shader = ExtResource("7_7r2dd")
@@ -624,3 +626,10 @@ texture = ExtResource("21_nojx8")
 position = Vector2(3790, 0)
 scale = Vector2(2.905, 1)
 next_level = "res://Scenes/Levels/level_2.tscn"
+
+[node name="Campfire" parent="." instance=ExtResource("23_ad63i")]
+position = Vector2(112, -39)
+
+[node name="Log" type="Sprite2D" parent="."]
+position = Vector2(93, -40)
+texture = ExtResource("24_pmbdk")

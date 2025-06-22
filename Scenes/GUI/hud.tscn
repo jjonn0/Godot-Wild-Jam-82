@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c52siqyt3t5hm" path="res://Code/Scripts/hud.gd" id="1_ok2ij"]
 [ext_resource type="Texture2D" uid="uid://yqs47terk75n" path="res://Assets/GUI/battery_drained.png" id="2_65piv"]
 [ext_resource type="Texture2D" uid="uid://1hmf6h2y8xsc" path="res://Assets/GUI/battery_full.png" id="2_ok2ij"]
-[ext_resource type="Script" uid="uid://cwac3ede7xgug" path="res://Scenes/GUI/player_menu.gd" id="4_rbehb"]
+[ext_resource type="Script" uid="uid://cwac3ede7xgug" path="res://Code/Scripts/player_menu.gd" id="4_rbehb"]
 
 [node name="HudCanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("lives_control", "energy_bar", "fps")]
 script = ExtResource("1_ok2ij")

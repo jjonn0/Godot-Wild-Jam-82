@@ -55,6 +55,8 @@ func _process(delta: float) -> void:
 	if flashlight_state and current_flashlight_time > 0:
 		current_flashlight_time -= delta
 		update_charge.emit(current_flashlight_time)
+	elif flashlight_state and current_flashlight_time <= 0:
+		toggle_light()
 	
 	if state_machine.current_state != $PlayerStateMachine/Death and dead:
 		respawn.emit(self)

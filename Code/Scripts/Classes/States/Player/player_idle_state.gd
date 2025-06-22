@@ -14,14 +14,14 @@ func state_enter() -> void:
 
 func state_physics(delta : float) -> void:
 	
+	if !player.is_on_floor():
+		state_transition.emit(self, "falling")
+	
 	if Input.is_action_just_pressed("jump"):
 		state_transition.emit(self, "jumping")
 	
 	if player.direction_input:
 		state_transition.emit(self, "walking")
-	
-	if !player.is_on_floor():
-		state_transition.emit(self, "falling")
 	
 	roll_animation_play(delta)
 

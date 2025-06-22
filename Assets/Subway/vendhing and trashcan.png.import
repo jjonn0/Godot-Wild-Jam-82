@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdorxvct51byt"
-path="res://.godot/imported/Block-Terminal_UNSEEN.png-a597a5aa5b0434873f86d3133f75765b.ctex"
+uid="uid://bx3ge47ntcmeu"
+path="res://.godot/imported/vendhing and trashcan.png-aef203fdcabd5a39e331aad54710e6e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Subway/Block-Terminal_UNSEEN.png"
-dest_files=["res://.godot/imported/Block-Terminal_UNSEEN.png-a597a5aa5b0434873f86d3133f75765b.ctex"]
+source_file="res://Assets/Subway/vendhing and trashcan.png"
+dest_files=["res://.godot/imported/vendhing and trashcan.png-aef203fdcabd5a39e331aad54710e6e6.ctex"]
 
 [params]
 

@@ -558,6 +558,7 @@ metadata/_custom_type_script = "uid://cegmtuuv2ux6r"
 
 [node name="Falling" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("11_gymyn")
+allow_v_input = false
 animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://cegmtuuv2ux6r"
 

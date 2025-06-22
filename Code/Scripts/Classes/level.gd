@@ -55,7 +55,7 @@ func spawn_player() -> void:
 	player.position = current_spawn.position
 	
 	current_spawn.get_parent().add_child(player)
-	player.respawn.connect(on_player_death)
+	player.respawn.connect(on_player_respawn)
 	player.on_damage.connect(start_haunting)
 	Global.player = player
 
@@ -72,7 +72,7 @@ func level_unload(next_level : String) -> void:
 	Global.game_manager.change_gui_scene("res://Scenes/GUI/hud.tscn")
 	Global.game_manager.change_2d_scene(next_level)
 
-func on_player_death(player : CharacterBody2D) -> void:
+func on_player_respawn(player : CharacterBody2D) -> void:
 	
 	if current_spawn != null:
 		player.position = current_spawn.position

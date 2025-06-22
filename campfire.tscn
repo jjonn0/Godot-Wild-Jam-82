@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtll8wygdbvrd"]
+
+[ext_resource type="Texture2D" uid="uid://c2r2j5byxanuw" path="res://Assets/Forest/Campfire.png" id="1_oufq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5him"]
+atlas = ExtResource("1_oufq8")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2ey3"]
+atlas = ExtResource("1_oufq8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk7h0"]
+atlas = ExtResource("1_oufq8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2ea5"]
+atlas = ExtResource("1_oufq8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1gn1"]
+atlas = ExtResource("1_oufq8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_edg01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5him")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2ey3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk7h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2ea5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1gn1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_lnl73"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.229219, 0.345088, 0.43073, 0.498741, 0.556675, 0.619647, 0.687657, 0.75063, 0.801008, 0.836272, 0.869018, 0.904282, 1)
+colors = PackedColorArray(0.588235, 0.588235, 0.588235, 1, 0.588235, 0.588235, 0.588235, 0.862745, 0.588235, 0.588235, 0.588235, 0.780392, 0.588235, 0.588235, 0.588235, 0.752941, 0.588235, 0.588235, 0.588235, 0.666667, 0.588235, 0.588235, 0.588235, 0.580392, 0.588235, 0.588235, 0.588235, 0.47451, 0.588235, 0.588235, 0.588235, 0.376471, 0.588235, 0.588235, 0.588235, 0.254902, 0.588235, 0.588235, 0.588235, 0.207843, 0.588235, 0.588235, 0.588235, 0.145098, 0.588235, 0.588235, 0.588235, 0.0823529, 0.588235, 0.588235, 0.588235, 0.027451, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oufq8"]
+gradient = SubResource("Gradient_lnl73")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.824786, 0.141026)
+
+[node name="Campfire" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_edg01")
+autoplay = "default"
+frame_progress = 0.732031
+
+[node name="PointLight2D2" type="PointLight2D" parent="." groups=["hauntable_light"]]
+position = Vector2(0, 2)
+color = Color(0.951392, 0.422648, 3.85046e-07, 1)
+energy = 1.2
+blend_mode = 2
+texture = SubResource("GradientTexture2D_oufq8")
+texture_scale = 2.5
