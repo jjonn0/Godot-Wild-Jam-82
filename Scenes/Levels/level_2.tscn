@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b5cumcapsyeul"]
+[gd_scene load_steps=48 format=4 uid="uid://b5cumcapsyeul"]
 
 [ext_resource type="Script" uid="uid://c5xssi4vk5i0r" path="res://Code/Scripts/level_2.gd" id="1_1jlnc"]
 [ext_resource type="Shader" uid="uid://b5i4urqmwsrf3" path="res://Code/Shaders/stage_light_shader.gdshader" id="2_u40f0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://tcwtk3w7q7ia" path="res://Assets/Cutscenes/scene_3.png" id="14_eopvx"]
 [ext_resource type="PackedScene" uid="uid://b88a4j0j8f36o" path="res://Scenes/end_game.tscn" id="15_t27xo"]
 [ext_resource type="Texture2D" uid="uid://ct13ybll3l3xx" path="res://Assets/Cutscenes/scene_end.png" id="15_yxf76"]
+[ext_resource type="AudioStream" uid="uid://dsx58gqpmbahx" path="res://Assets/Audio/Music/Terminal Station Level.mp3" id="17_ia1lp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0x4y1"]
 shader = ExtResource("2_u40f0")
@@ -464,3 +465,10 @@ position = Vector2(1564, -106)
 
 [node name="Lamp8" parent="." instance=ExtResource("13_uqiic")]
 position = Vector2(1758, -106)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("17_ia1lp")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
